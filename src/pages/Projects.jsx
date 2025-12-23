@@ -1,8 +1,9 @@
 import heroes1 from '../assets/heroes1.jpg';
 import heroes2 from '../assets/heroes2.jpg';
 import campus from '../assets/campus.jpg';
+import ev from '../assets/ev.png';
 
-const Project = ({ title, desc, stack, images, githubLink, downloadLink }) => (
+const Project = ({ title, desc, stack, images, githubLink, downloadLink, liveLink }) => (
     <div style={{
         padding: '2rem',
         border: '1px solid #eee',
@@ -33,20 +34,34 @@ const Project = ({ title, desc, stack, images, githubLink, downloadLink }) => (
                         download game
                     </a>
                 )}
+                {liveLink && (
+                    <a href={liveLink} target="_blank" rel="noopener noreferrer" style={{
+                        fontSize: '0.9rem',
+                        padding: '4px 12px',
+                        background: '#000',
+                        color: '#fff',
+                        borderRadius: '4px',
+                        textDecoration: 'none'
+                    }}>
+                        visit site
+                    </a>
+                )}
             </div>
         </div>
 
         <p style={{ color: '#666', marginBottom: '1.5rem', lineHeight: '1.6' }}>{desc}</p>
 
-        {images && images.length > 0 && (
-            <div style={{ display: 'grid', gridTemplateColumns: images.length > 1 ? '1fr 1fr' : '1fr', gap: '1rem', marginBottom: '1.5rem' }}>
-                {images.map((img, index) => (
-                    <div key={index} style={{ overflow: 'hidden', borderRadius: '4px', border: '1px solid #eee' }}>
-                        <img src={img} alt={`${title} screenshot ${index + 1}`} style={{ width: '100%', height: 'auto', display: 'block' }} />
-                    </div>
-                ))}
-            </div>
-        )}
+        {
+            images && images.length > 0 && (
+                <div style={{ display: 'grid', gridTemplateColumns: images.length > 1 ? '1fr 1fr' : '1fr', gap: '1rem', marginBottom: '1.5rem' }}>
+                    {images.map((img, index) => (
+                        <div key={index} style={{ overflow: 'hidden', borderRadius: '4px', border: '1px solid #eee' }}>
+                            <img src={img} alt={`${title} screenshot ${index + 1}`} style={{ width: '100%', height: 'auto', display: 'block' }} />
+                        </div>
+                    ))}
+                </div>
+            )
+        }
 
         <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
             {stack.map((tech) => (
@@ -61,7 +76,7 @@ const Project = ({ title, desc, stack, images, githubLink, downloadLink }) => (
                 </span>
             ))}
         </div>
-    </div>
+    </div >
 );
 
 const Projects = () => {
@@ -79,7 +94,15 @@ const Projects = () => {
             desc: 'an application allows students to discover, organize, and attend events on campus. features user profiles, event creation, and ticket management.',
             stack: ['html', 'css', 'javascript', 'mongodb'],
             images: [campus],
-            githubLink: 'https://github.com/zaifnatra/SOEN341-F25'
+            githubLink: 'https://github.com/zaifnatra/SOEN341-F25',
+            liveLink: 'https://soen341-f25.onrender.com/'
+        },
+        {
+            title: 'ev prediction model',
+            desc: 'machine learning model to predict electric vehicle details. built with python and scikit-learn, deployed on streamlit.',
+            stack: ['python', 'streamlit', 'scikit-learn'],
+            images: [ev],
+            liveLink: 'https://ev-prediction-zaifnatra.streamlit.app/'
         },
     ];
 
