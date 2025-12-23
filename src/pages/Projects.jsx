@@ -71,7 +71,7 @@ const Projects = () => {
             desc: '2d puzzle adventure game where you navigate through a randomized maze with obstacles. built from scratch in java.',
             stack: ['java'],
             images: [heroes1, heroes2],
-            githubLink: 'https://github.com/zaifnatra/heroes-journey',
+            githubLink: 'https://github.com/zaifnatra/spaceus',
             downloadLink: '/game.jar'
         },
         {
@@ -79,7 +79,7 @@ const Projects = () => {
             desc: 'an application allows students to discover, organize, and attend events on campus. features user profiles, event creation, and ticket management.',
             stack: ['html', 'css', 'javascript', 'mongodb'],
             images: [campus],
-            githubLink: 'https://github.com/zaifnatra/campus-events'
+            githubLink: 'https://github.com/zaifnatra/SOEN341-F25'
         },
     ];
 

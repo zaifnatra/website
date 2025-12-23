@@ -26,7 +26,6 @@ const Contact = () => {
                             <a href="https://github.com/zaifnatra" target="_blank" rel="noopener noreferrer" style={{ fontSize: '1.5rem', fontWeight: '500' }}>github</a>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
