@@ -1,3 +1,5 @@
+import cv from '../assets/cv.pdf';
+
 const Contact = () => {
     return (
         <div>
@@ -27,6 +29,14 @@ const Contact = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div style={{ marginTop: '2rem' }}>
+                <a href={cv} download="cv.pdf" style={{
+                    display: 'inline-block', padding: '1rem 2rem', background: '#000',
+                    color: '#fff', fontWeight: '600', borderRadius: '4px'
+                }}>
+                    download cv
+                </a>
             </div>
         </div>
     );
