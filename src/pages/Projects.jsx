@@ -102,6 +102,7 @@ const Projects = () => {
             desc: 'machine learning model to predict electric vehicle details. built with python and scikit-learn, deployed on streamlit.',
             stack: ['python', 'streamlit', 'scikit-learn'],
             images: [ev],
+            githubLink: 'https://github.com/zaifnatra/ev-ml',
             liveLink: 'https://ev-prediction-zaifnatra.streamlit.app/'
         },
     ];
