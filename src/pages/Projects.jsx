@@ -79,7 +79,7 @@ const Project = ({ title, desc, stack, images, githubLink, downloadLink, liveLin
     </div >
 );
 
-const Projects = () => {
+const Projects = ({ id }) => {
     const projects = [
         {
             title: 'heroes journey',
@@ -108,7 +108,7 @@ const Projects = () => {
     ];
 
     return (
-        <div>
+        <div id={id} style={{ scrollMarginTop: '100px', paddingTop: '2rem' }}>
             <h2 style={{ fontSize: '2.5rem', fontWeight: '800', marginBottom: '3rem', letterSpacing: '-1px' }}>projects</h2>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '0' }}>
                 {projects.map((p) => (

@@ -1,13 +1,20 @@
-import { Link, useLocation } from 'react-router-dom';
+
 
 const Navigation = () => {
-  const location = useLocation();
   const links = [
-    { path: '/', label: 'home' },
-    { path: '/about', label: 'about' },
-    { path: '/projects', label: 'projects' },
-    { path: '/contact', label: 'contact' },
+    { path: '#home', label: 'home' },
+    { path: '#about', label: 'about' },
+    { path: '#projects', label: 'projects' },
+    { path: '#contact', label: 'contact' },
   ];
+
+  const handleScroll = (e, path) => {
+    e.preventDefault();
+    const element = document.querySelector(path);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <nav style={{
@@ -21,22 +28,23 @@ const Navigation = () => {
       gap: '2rem',
       zIndex: 100,
       background: 'rgba(255,255,255,0.95)',
-      backdropFilter: 'blur(5px)' // Subtle blur
+      backdropFilter: 'blur(5px)'
     }}>
       {links.map((link) => (
-        <Link
+        <a
           key={link.path}
-          to={link.path}
+          href={link.path}
+          onClick={(e) => handleScroll(e, link.path)}
           style={{
             fontSize: '1rem',
-            fontWeight: location.pathname === link.path ? '600' : '400',
-            textDecoration: location.pathname === link.path ? 'underline' : 'none',
-            textUnderlineOffset: '6px',
-            color: '#000'
+            fontWeight: '400',
+            textDecoration: 'none',
+            color: '#000',
+            cursor: 'pointer'
           }}
         >
           {link.label}
-        </Link>
+        </a>
       ))}
     </nav>
   );

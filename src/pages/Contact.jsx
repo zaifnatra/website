@@ -1,8 +1,8 @@
 import cv from '../assets/cv.pdf';
 
-const Contact = () => {
+const Contact = ({ id }) => {
     return (
-        <div>
+        <div id={id} style={{ scrollMarginTop: '100px', paddingTop: '2rem', paddingBottom: '4rem' }}>
             <h2 style={{ fontSize: '2.5rem', fontWeight: '800', marginBottom: '3rem', letterSpacing: '-1px' }}>contact</h2>
 
             <div style={{ maxWidth: '600px' }}>

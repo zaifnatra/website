@@ -21,9 +21,9 @@ const Section = ({ title, content, images }) => (
     </div>
 );
 
-const About = () => {
+const About = ({ id }) => {
     return (
-        <div>
+        <div id={id} style={{ scrollMarginTop: '100px', paddingTop: '2rem' }}>
             <h2 style={{ fontSize: '2.5rem', fontWeight: '800', marginBottom: '3rem', letterSpacing: '-1px' }}>about me</h2>
 
             <Section

@@ -1,12 +1,13 @@
-const Home = () => {
+const Home = ({ id }) => {
     return (
-        <div style={{
-            height: '60vh',
+        <div id={id} style={{
+            minHeight: '80vh', /* Changed from fixed height to min-height for better scroll feel */
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            textAlign: 'center'
+            textAlign: 'center',
+            scrollMarginTop: '100px'
         }}>
             <h1 style={{ fontSize: 'clamp(3rem, 5vw, 4.5rem)', fontWeight: '800', marginBottom: '1rem', letterSpacing: '-3px', lineHeight: '1.1' }}>
                 huzaifa fareed
