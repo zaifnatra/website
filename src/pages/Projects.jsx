@@ -3,7 +3,7 @@ import heroes2 from '../assets/heroes2.jpg';
 import campus from '../assets/campus.jpg';
 import ev from '../assets/ev.png';
 import s1 from '../assets/S1.jpg';
-import s2 from '../assets/S1.jpg';
+import s2 from '../assets/S2jpg';
 const Project = ({ title, desc, stack, images, githubLink, downloadLink, liveLink }) => (
     <div style={{
         padding: '2rem',
@@ -88,7 +88,7 @@ const Projects = ({ id }) => {
             stack: ['react, next.js, typescript, tailwind css, supabase, prisma '],
             images: [s1, s2],
             githubLink: 'https://github.com/zaifnatra/gear-pack',
-            livelink: 'https://gear-pack.vercel.app/'
+            liveLink: 'https://gear-pack.vercel.app/'
 
         },
         {
@@ -115,7 +115,7 @@ const Projects = ({ id }) => {
             githubLink: 'https://github.com/zaifnatra/SOEN341-F25',
             liveLink: 'https://soen341-f25.onrender.com/'
         },
-    
+
     ];
 
     return (
