@@ -2,7 +2,8 @@ import heroes1 from '../assets/heroes1.jpg';
 import heroes2 from '../assets/heroes2.jpg';
 import campus from '../assets/campus.jpg';
 import ev from '../assets/ev.png';
-
+import s1 from '../assets/S1.jpg';
+import s2 from '../assets/S1.jpg';
 const Project = ({ title, desc, stack, images, githubLink, downloadLink, liveLink }) => (
     <div style={{
         padding: '2rem',
@@ -82,6 +83,23 @@ const Project = ({ title, desc, stack, images, githubLink, downloadLink, liveLin
 const Projects = ({ id }) => {
     const projects = [
         {
+            title: 'gear pack',
+            desc: 'a web app where friends can track&store their hiking/mountaineering gear among friends',
+            stack: ['react, next.js, typescript, tailwind css, supabase, prisma '],
+            images: [s1, s2],
+            githubLink: 'https://github.com/zaifnatra/gear-pack',
+            livelink: 'https://gear-pack.vercel.app/'
+
+        },
+        {
+            title: 'ev prediction model',
+            desc: 'machine learning model to predict electric vehicle details. built with python and scikit-learn, deployed on streamlit.',
+            stack: ['python', 'streamlit', 'scikit-learn'],
+            images: [ev],
+            githubLink: 'https://github.com/zaifnatra/ev-ml',
+            liveLink: 'https://ev-prediction-zaifnatra.streamlit.app/'
+        },
+        {
             title: 'heroes journey',
             desc: '2d puzzle adventure game where you navigate through a randomized maze with obstacles. built from scratch in java.',
             stack: ['java'],
@@ -97,14 +115,7 @@ const Projects = ({ id }) => {
             githubLink: 'https://github.com/zaifnatra/SOEN341-F25',
             liveLink: 'https://soen341-f25.onrender.com/'
         },
-        {
-            title: 'ev prediction model',
-            desc: 'machine learning model to predict electric vehicle details. built with python and scikit-learn, deployed on streamlit.',
-            stack: ['python', 'streamlit', 'scikit-learn'],
-            images: [ev],
-            githubLink: 'https://github.com/zaifnatra/ev-ml',
-            liveLink: 'https://ev-prediction-zaifnatra.streamlit.app/'
-        },
+    
     ];
 
     return (
