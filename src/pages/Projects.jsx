@@ -3,7 +3,7 @@ import heroes2 from '../assets/heroes2.jpg';
 import campus from '../assets/campus.jpg';
 import ev from '../assets/ev.png';
 import s1 from '../assets/S1.jpg';
-import s2 from '../assets/S2jpg';
+import s2 from '../assets/S2.jpg';
 const Project = ({ title, desc, stack, images, githubLink, downloadLink, liveLink }) => (
     <div style={{
         padding: '2rem',
