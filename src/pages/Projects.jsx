@@ -4,6 +4,9 @@ import campus from '../assets/campus.jpg';
 import ev from '../assets/ev.png';
 import s1 from '../assets/S1.jpg';
 import s2 from '../assets/S2.jpg';
+import sol1 from '../assets/original.png';
+import sol2 from '../assets/original2.png';
+
 const Project = ({ title, desc, stack, images, githubLink, downloadLink, liveLink }) => (
     <div style={{
         padding: '2rem',
@@ -82,6 +85,15 @@ const Project = ({ title, desc, stack, images, githubLink, downloadLink, liveLin
 
 const Projects = ({ id }) => {
     const projects = [
+        {
+            title: 'winner 🎖️ - mchacks solana project - mtl minted ',
+            desc: 'platform to mint and tokenize artist idenity, built on SOL blockchain',
+            stack: ['solana, rust, anchor, react'],
+            images: [sol1, sol2],
+            githubLink: 'https://github.com/zaifnatra/solana',
+            liveLink: 'https://devpost.com/software/black-beauty'
+        },
+
         {
             title: 'gear pack',
             desc: 'a web app where friends can track&store their hiking/mountaineering gear among friends',
