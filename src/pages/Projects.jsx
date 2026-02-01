@@ -6,6 +6,8 @@ import s1 from '../assets/S1.jpg';
 import s2 from '../assets/S2.jpg';
 import sol1 from '../assets/original.png';
 import sol2 from '../assets/original2.png';
+import r1 from '../assets/retro1.png';
+import r2 from '../assets/retro.png';
 
 const Project = ({ title, desc, stack, images, githubLink, downloadLink, liveLink }) => (
     <div style={{
@@ -92,6 +94,15 @@ const Projects = ({ id }) => {
             images: [sol1, sol2],
             githubLink: 'https://github.com/zaifnatra/solana',
             liveLink: 'https://devpost.com/software/black-beauty'
+        },
+
+        {
+            title: 'winner 🎖️ - conuhacks solana project - retro secrets ',
+            desc: 'hide messages in plain sight using stenography with custom encryption and build a social platform',
+            stack: ['python, typescript'],
+            images: [r1,r2],
+            githubLink: 'https://github.com/deltag0/ConUHacks',
+            liveLink: 'https://devpost.com/software/retro-secrets'
         },
 
         {
