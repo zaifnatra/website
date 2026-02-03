@@ -98,7 +98,7 @@ const Projects = ({ id }) => {
 
         {
             title: 'winner 🎖️ - conuhacks solana project - retro secrets ',
-            desc: 'hide messages in plain sight using stenography with custom encryption and build a social platform',
+            desc: 'hide messages in plain sight using stenography with custom encryption and we built a social platform :)',
             stack: ['python, typescript'],
             images: [r1,r2],
             githubLink: 'https://github.com/deltag0/ConUHacks',
