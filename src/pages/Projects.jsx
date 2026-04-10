@@ -8,6 +8,8 @@ import sol1 from '../assets/original.png';
 import sol2 from '../assets/original2.png';
 import r1 from '../assets/retro1.png';
 import r2 from '../assets/retro.png';
+import pe1 from '../assets/screenShot.png'
+import pe2 from '../assets/dashboard.png'
 
 const Project = ({ title, desc, stack, images, githubLink, downloadLink, liveLink }) => (
     <div style={{
@@ -87,6 +89,15 @@ const Project = ({ title, desc, stack, images, githubLink, downloadLink, liveLin
 
 const Projects = ({ id }) => {
     const projects = [
+        {
+            title: '3rd overall - meta x mlh production engineering - shorten.it ',
+            desc: 'url shortener tested to survive production, outages and load tests',
+            stack: ['flask, redis, grafana, postgresql '],
+            images: [pe1, pe2],
+            githubLink: 'https://github.com/zaifnatra/MetaHackathon',
+            liveLink: 'https://devpost.com/software/shorten-it'
+        },
+
         {
             title: 'winner 🎖️ - mchacks solana project - mtl minted ',
             desc: 'platform to mint and tokenize artist idenity, built on SOL blockchain',
