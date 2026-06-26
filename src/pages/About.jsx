@@ -4,6 +4,33 @@ import salkantay2 from '../assets/salkantay2.JPG';
 import cat from '../assets/cat.jpg';
 import camp from '../assets/camp.jpeg';
 import golf from '../assets/golf.JPG';
+import logoShopify from '../assets/logo-shopify.png';
+import logoMeta from '../assets/logo-meta.png';
+import logoBombardier from '../assets/logo-bombardier.png';
+
+const experiences = [
+    {
+        company: 'Shopify',
+        role: 'Software Engineer Intern',
+        dates: 'Sept 2026 – Jan 2027',
+        logo: logoShopify,
+        url: 'https://www.shopify.com',
+    },
+    {
+        company: 'Meta × MLH Fellowship',
+        role: 'Production Engineering Fellow',
+        dates: 'June 2026 – Sept 2026',
+        logo: logoMeta,
+        url: 'https://fellowship.mlh.io',
+    },
+    {
+        company: 'Bombardier Aerospace',
+        role: 'Software Engineer Intern',
+        dates: 'Jan 2026 – Aug 2026',
+        logo: logoBombardier,
+        url: 'https://www.bombardier.com',
+    },
+];
 
 const Section = ({ title, content, images }) => (
     <div style={{ marginBottom: '5rem' }}>
@@ -25,6 +52,53 @@ const About = ({ id }) => {
     return (
         <div id={id} style={{ scrollMarginTop: '100px', paddingTop: '2rem' }}>
             <h2 style={{ fontSize: '2.5rem', fontWeight: '800', marginBottom: '3rem', letterSpacing: '-1px' }}>about me</h2>
+
+            <div style={{ marginBottom: '5rem' }}>
+                <h3 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '1.5rem', borderBottom: '1px solid #eee', paddingBottom: '0.5rem' }}>experience</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                    {experiences.map((exp, i) => (
+                        <a
+                            key={i}
+                            href={exp.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '1rem',
+                                textDecoration: 'none',
+                                color: 'inherit',
+                                padding: '0.75rem',
+                                borderRadius: '8px',
+                                marginLeft: '-0.75rem',
+                                transition: 'background 0.15s ease',
+                            }}
+                            onMouseEnter={e => e.currentTarget.style.background = '#f5f5f5'}
+                            onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+                        >
+                            <img
+                                src={exp.logo}
+                                alt={exp.company}
+                                style={{
+                                    width: '40px',
+                                    height: '40px',
+                                    borderRadius: '8px',
+                                    objectFit: 'contain',
+                                    border: '1px solid #e8e8e8',
+                                    background: '#fff',
+                                    flexShrink: 0,
+                                }}
+                            />
+                            <div>
+                                <div style={{ fontSize: '1rem', fontWeight: '600', lineHeight: '1.3' }}>{exp.company}</div>
+                                <div style={{ fontSize: '0.875rem', color: '#666', marginTop: '2px' }}>
+                                    {exp.role} · {exp.dates}
+                                </div>
+                            </div>
+                        </a>
+                    ))}
+                </div>
+            </div>
 
             <Section
                 title="hello"
