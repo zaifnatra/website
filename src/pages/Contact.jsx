@@ -31,11 +31,11 @@ const Contact = ({ id }) => {
                 </div>
             </div>
             <div style={{ marginTop: '2rem' }}>
-                <a href={cv} download="cv.pdf" style={{
+                <a href={cv} target="_blank" rel="noopener noreferrer" style={{
                     display: 'inline-block', padding: '1rem 2rem', background: '#000',
                     color: '#fff', fontWeight: '600', borderRadius: '4px'
                 }}>
-                    download cv
+                    view cv
                 </a>
             </div>
         </div>
