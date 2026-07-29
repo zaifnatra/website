@@ -12,7 +12,7 @@ const experiences = [
     {
         company: 'Shopify',
         role: 'Software Engineer Intern',
-        dates: 'Sept 2026 – Jan 2027',
+        dates: 'Sept 2026 – Dec 2026',
         logo: logoShopify,
         url: 'https://www.shopify.com',
     },
