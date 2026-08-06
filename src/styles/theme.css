@@ -26,36 +26,10 @@ section[id] { scroll-margin-top: 2rem; }
 .btn:hover { transform: scale(1.03); opacity: 1; }
 .chip:hover { background: #000000; color: #FFFFFF; opacity: 1; }
 
-/* visitor counter */
-.visitor-count {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  padding: .35rem .75rem;
-  border: 1px solid #E4E4E4;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, .7);
-  backdrop-filter: blur(6px);
-  font-size: .75rem;
-  letter-spacing: .06em;
-  color: #6F6F6F;
-  white-space: nowrap;
-  animation: fadeRise .5s ease-out both;
-}
-
-.visitor-count b { font-weight: 500; color: #000000; }
-
-.visitor-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #000000;
-  animation: pulse 2.4s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: .25; }
+/* on phones the text links are dropped so the logo and "Get in touch"
+   button stay together on a single top row instead of wrapping down */
+@media (max-width: 640px) {
+  .nav-links { display: none !important; }
 }
 
 @keyframes fadeRise {

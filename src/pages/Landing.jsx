@@ -1,5 +1,4 @@
 import '../styles/theme.css';
-import VisitorCount from '../components/VisitorCount';
 import imgSalkantay2 from '../assets/salkantay2.JPG';
 import imgLogo_shopify from '../assets/logo-shopify.png';
 import imgLogo_meta from '../assets/logo-meta.png';
@@ -34,17 +33,16 @@ export default function Landing() {
           </div>
 
           <nav style={{ position: 'relative', zIndex: '10', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', maxWidth: '80rem', margin: '0 auto', padding: '1.5rem 2rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              <a href="#top" style={{ fontFamily: "'Instrument Serif',serif", fontSize: '1.875rem', letterSpacing: '-0.02em', color: '#000000', lineHeight: '1' }}>huzaifa<sup style={{ fontSize: '.5em', verticalAlign: 'super', letterSpacing: '0' }}>®</sup></a>
-              <VisitorCount />
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '1rem 1.5rem', justifyContent: 'flex-end' }}>
-              <a href="#top" style={{ fontSize: '.875rem', color: '#000000', transition: 'color .2s ease' }}>Home</a>
-              <a href="#about" style={{ fontSize: '.875rem', color: '#6F6F6F', transition: 'color .2s ease' }} className="nav-link">About</a>
-              <a href="#work" style={{ fontSize: '.875rem', color: '#6F6F6F', transition: 'color .2s ease' }} className="nav-link">Work</a>
-              <a href="#outside" style={{ fontSize: '.875rem', color: '#6F6F6F', transition: 'color .2s ease' }} className="nav-link">Outside</a>
-              <a href="#contact" style={{ fontSize: '.875rem', color: '#6F6F6F', transition: 'color .2s ease' }} className="nav-link">Reach Me</a>
-              <a href="#contact" style={{ borderRadius: '999px', padding: '.625rem 1.5rem', fontSize: '.875rem', background: '#000000', color: '#FFFFFF', transition: 'transform .25s ease' }} className="btn">Get in touch</a>
+            <a href="#top" style={{ fontFamily: "'Instrument Serif',serif", fontSize: '1.875rem', letterSpacing: '-0.02em', color: '#000000', lineHeight: '1' }}>huzaifa<sup style={{ fontSize: '.5em', verticalAlign: 'super', letterSpacing: '0' }}>®</sup></a>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem 1.5rem', justifyContent: 'flex-end' }}>
+              <div className="nav-links" style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '1rem 1.5rem', justifyContent: 'flex-end' }}>
+                <a href="#top" style={{ fontSize: '.875rem', color: '#000000', transition: 'color .2s ease' }}>Home</a>
+                <a href="#about" style={{ fontSize: '.875rem', color: '#6F6F6F', transition: 'color .2s ease' }} className="nav-link">About</a>
+                <a href="#work" style={{ fontSize: '.875rem', color: '#6F6F6F', transition: 'color .2s ease' }} className="nav-link">Work</a>
+                <a href="#outside" style={{ fontSize: '.875rem', color: '#6F6F6F', transition: 'color .2s ease' }} className="nav-link">Outside</a>
+                <a href="#contact" style={{ fontSize: '.875rem', color: '#6F6F6F', transition: 'color .2s ease' }} className="nav-link">Reach Me</a>
+              </div>
+              <a href="#contact" style={{ borderRadius: '999px', padding: '.625rem 1.5rem', fontSize: '.875rem', background: '#000000', color: '#FFFFFF', transition: 'transform .25s ease', whiteSpace: 'nowrap' }} className="btn">Get in touch</a>
             </div>
           </nav>
 
