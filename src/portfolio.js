@@ -10,8 +10,8 @@ const dialogTop = (chapter, label) => `<div class="dialog-top"><span class="eyeb
 
 export const projects = [
   {
-    title: 'Gear-Pack', image: 'project-gear-pack.jpg', kicker: 'A project I keep coming back to', featured: true,
-    copy: 'A trip-planning platform for the part of hiking that happens before the trailhead: planning a route, sharing gear, and figuring out who is bringing what.',
+    title: 'Gear-Pack', image: 'project-gear-pack.jpg', kicker: 'Trip planning', featured: true,
+    copy: 'A hiking app for planning routes, sharing gear lists, and organizing group trips.',
     detail: 'I built the app around collaborative trips, a PostgreSQL backend, and an AI assistant that remembers each user across sessions. An iOS app is in progress with Expo and React Native.',
     tech: ['Next.js', 'TypeScript', 'Supabase', 'AI'],
     links: [['https://gear-pack.vercel.app/', 'Explore Gear-Pack'], ['https://github.com/zaifnatra/gear-pack', 'Source code']],
@@ -25,30 +25,30 @@ export const projects = [
   },
   {
     title: 'shorten.it', image: 'project-shorten-it.jpg', kicker: '3rd overall · Meta × MLH PE Hackathon',
-    copy: 'A URL shortener built to be put through its paces. Load tests, injected outages, and Grafana dashboards helped us see what held up and what broke.',
+    copy: 'A URL shortener tested with load tests and simulated outages, with Grafana dashboards for monitoring.',
     tech: ['Production engineering', 'Observability'],
     links: [['https://devpost.com/software/shorten-it', 'The project'], ['https://github.com/zaifnatra/MetaHackathon', 'Source code']],
   },
   {
     title: 'retro secrets', image: 'project-retro-secrets.jpg', kicker: 'Winner · Web3 Challenge · ConUHacks',
-    copy: 'Hidden messages inside images, using steganography and custom encryption. A small social platform gave those secrets somewhere to travel.',
+    copy: 'A social app for sharing messages hidden in images using steganography and custom encryption.',
     tech: ['Steganography', 'Encryption'],
     links: [['https://devpost.com/software/retro-secrets', 'The project'], ['https://github.com/deltag0/ConUHacks', 'Source code']],
   },
   {
-    title: 'EV prediction model', image: 'project-ev-model.jpg', kicker: 'An experiment with data',
+    title: 'EV prediction model', image: 'project-ev-model.jpg', kicker: 'Machine learning',
     copy: 'Predicting electric vehicle specifications with scikit-learn, wrapped in a small Streamlit app so the model is easy to try.',
     tech: ['Python', 'scikit-learn', 'Streamlit'],
     links: [['https://ev-prediction-zaifnatra.streamlit.app/', 'Try the model'], ['https://github.com/zaifnatra/ev-ml', 'Source code']],
   },
   {
     title: 'heroes journey', image: 'project-heroes-journey.jpg', kicker: 'Built from scratch',
-    copy: 'A 2D puzzle adventure through a randomized maze. Written from scratch in Java, one room and one puzzle at a time.',
+    copy: 'A 2D puzzle adventure through a randomized maze. Written from scratch in Java.',
     tech: ['Java', 'Game development'],
     links: [['https://github.com/zaifnatra/spaceus', 'Source code']],
   },
   {
-    title: 'campus events', image: 'project-campus-events.jpg', kicker: 'A little more campus life',
+    title: 'campus events', image: 'project-campus-events.jpg', kicker: 'Campus events',
     copy: 'A place for students to find, organize, and get tickets to events on campus.',
     tech: ['Web application', 'Student project'],
     links: [['https://soen341-f25.onrender.com/', 'Open the app'], ['https://github.com/zaifnatra/SOEN341-F25', 'Source code']],
@@ -57,23 +57,23 @@ export const projects = [
 
 export const hobbies = [
   {
-    title: 'A long way from Montréal.', kicker: 'PERU / SALKANTAY',
-    copy: 'Multi-day hiking, incredible scenery, and people I was glad to meet along the way. The Salkantay trek is still one of my favourite trips.',
+    title: 'Salkantay trek, Peru', kicker: 'PERU / SALKANTAY',
+    copy: 'The Salkantay trek in Peru is one of my favourite multi-day hikes.',
     image: 'personal-salkantay.jpg', alt: 'Hikers on a rocky mountain pass during the Salkantay trek in Peru',
   },
   {
-    title: '75 km. 12 hours. One more loop.', kicker: 'RUNNING / A BACKYARD ULTRA',
-    copy: 'My longest run so far. A lot of running, and a lot of convincing myself to go around once more.',
+    title: '75 km backyard ultra', kicker: 'RUNNING / A BACKYARD ULTRA',
+    copy: 'I ran 75 km over 12 hours in a backyard ultra. My longest run so far.',
     image: 'personal-ultra.jpg', alt: 'A rest between loops at a backyard ultramarathon',
   },
   {
-    title: 'A little closer to home.', kicker: 'THE DAYS IN BETWEEN',
-    copy: 'Hiking in the Adirondacks, winter trails, camping, and fishing. It doesn’t always need to be an expedition.',
+    title: 'Hiking and camping', kicker: 'HIKING / CAMPING',
+    copy: 'Hiking in the Adirondacks, winter trails, camping, and fishing.',
     image: 'personal-camp.jpg', alt: 'A yellow tent among snow-dusted trees on a camping trip',
   },
   {
-    title: 'Sometimes, just a round of golf.', kicker: 'NO SUMMIT REQUIRED',
-    copy: 'Another reason to spend a few hours outside.',
+    title: 'Golf', kicker: 'GOLF',
+    copy: 'I also play golf.',
     image: 'personal-golf.jpg', alt: 'A personal snapshot on the golf course',
   },
 ];
@@ -100,12 +100,12 @@ function renderReader(kind, previousIndex, animate = true) {
   const project = kind === 'projects';
   const imageLabel = project ? `${item.title} project screenshot` : item.alt;
   spread.innerHTML = `<figure class="folio-image-page ${project ? 'folio-project-image' : 'folio-photo-image'}">
-    <span class="folio-page-eyebrow">${project ? 'FROM THE WORKBENCH' : 'FROM MY CAMERA ROLL'}</span>
+    <span class="folio-page-eyebrow">${project ? 'PROJECT SCREENSHOT' : 'MY PHOTOS'}</span>
     <a href="${base}images/${item.image}" target="_blank" rel="noopener noreferrer" aria-label="Open ${imageLabel}"><img src="${base}images/${item.image}" alt="${imageLabel}" width="1200" height="900" decoding="async" /><span>View ${project ? 'screenshot' : 'photo'} ↗</span></a>
-    <figcaption>${String(index + 1).padStart(2, '0')} / ${project ? 'A project notebook' : 'A few days worth remembering'}</figcaption>
+    <figcaption>${String(index + 1).padStart(2, '0')} / ${project ? 'A project notebook' : 'Photos'}</figcaption>
     </figure><article class="folio-text-page" aria-labelledby="${kind}-page-title"><span class="folio-page-number" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span><p class="folio-kicker">${item.kicker}</p><h3 id="${kind}-page-title">${item.title}</h3><p class="folio-copy">${item.copy}</p>
     ${item.detail ? `<p class="folio-detail">${item.detail}</p>` : ''}
-    ${project ? `${tags(item.tech)}<div class="portfolio-links">${item.links.map(([href, label]) => external(href, label)).join('')}</div>` : '<span class="folio-personal-note">A little life outside the laptop.</span>'}
+    ${project ? `${tags(item.tech)}<div class="portfolio-links">${item.links.map(([href, label]) => external(href, label)).join('')}</div>` : ''}
     </article>`;
   const count = document.getElementById(`${kind}-page-count`);
   count.textContent = `Page ${index + 1} of ${items.length}`;
@@ -162,8 +162,8 @@ export function mountPortfolio() {
   document.body.insertAdjacentHTML('beforeend', `
     <dialog id="experience-dialog" class="portfolio-dialog portfolio-dialog-wide" aria-labelledby="experience-title">
       ${dialogTop('01', 'WORK & SCHOOL')}
-      <h2 id="experience-title">A few stops<br>along the way.</h2>
-      <p class="dialog-lead">I’m a software engineering student in Montréal. Lately, I’ve been working on the infrastructure that keeps other people’s software running.</p>
+      <h2 id="experience-title">Experience</h2>
+      <p class="dialog-lead">I’m a software engineering student at Concordia, currently working on streaming infrastructure at Shopify.</p>
       <div class="experience-route">
         <article class="portfolio-entry portfolio-entry-current" data-experience="shopify">
           <div class="entry-heading"><div class="company-heading"><img class="company-logo" src="${shopifyLogo}" alt="" width="36" height="36" /><div><h3>Shopify</h3><p class="entry-meta">Software Engineering Intern · Streaming Infrastructure</p></div></div><span class="entry-date">Sep 2026 — present</span></div>
@@ -173,56 +173,56 @@ export function mountPortfolio() {
         </article>
         <article class="portfolio-entry" data-experience="mlh">
           <div class="entry-heading"><div class="company-heading"><img class="company-logo" src="${metaLogo}" alt="" width="36" height="36" /><div><h3>Meta × MLH Fellowship</h3><p class="entry-meta">Production Engineering Fellow · Remote</p></div></div><span class="entry-date">Jun — Sep 2026</span></div>
-          <p>This is where I learned Docker, Unix, and Linux by putting them to work. With mentorship from Meta production engineers, I built, deployed, monitored, and debugged real services.</p>
+          <p>I learned Docker, Unix, and Linux during the fellowship. With mentorship from Meta production engineers, I built, deployed, monitored, and debugged real services.</p>
           <ul class="work-notes"><li>Built three validated Flask API endpoints and deployed Docker services behind NGINX on a Linux VPS.</li><li>Automated releases with GitHub Actions and nine integration tests; added <strong>16 Prometheus alert rules and a 14-panel Grafana dashboard</strong> with Discord paging.</li></ul>
           ${tags(['Docker', 'Unix', 'Linux', 'Flask', 'Prometheus', 'Grafana'])}
         </article>
         <article class="portfolio-entry" data-experience="bombardier">
           <div class="entry-heading"><div class="company-heading"><img class="company-logo" src="${bombardierLogo}" alt="" width="36" height="36" /><div><h3>Bombardier Aerospace</h3><p class="entry-meta">Software Engineering Intern · Montréal</p></div></div><span class="entry-date">Jan — Aug 2026</span></div>
-          <p>A lot of Power BI, SQL, and internal tooling. Not always the flashiest work, but I learned a lot about aircraft and the engineering work behind them.</p>
+          <p>I worked with Power BI, SQL, and internal tools, and learned about aircraft engineering.</p>
           <ul class="work-notes"><li>Reverse-engineered an undocumented Java application to fetch, map, and visualize <strong>4,000+ records</strong>, saving engineers more than four hours of manual entry.</li><li>Built a SQL pipeline for <strong>10,000+ records</strong>, expanding KPI visibility through BI dashboards for 500+ engineers.</li><li>Wrote Unix and symlink work instructions that helped engineers work independently.</li></ul>
           ${tags(['Power BI', 'SQL', 'Java', 'Unix', 'Aerospace'])}
         </article>
         <article class="portfolio-entry">
           <div class="entry-heading"><div><h3>Student Works</h3><p class="entry-meta">Crew Chief & Sales</p></div><span class="entry-date">People & operations</span></div>
-          <p>I led a crew of three to five people and worked in sales. A different kind of responsibility: less code, more people, and a team to look after.</p>
+          <p>I led a crew of three to five people and worked in sales.</p>
         </article>
         <section class="portfolio-entry work-away" aria-labelledby="work-away-title">
-          <p class="eyebrow">MORE THAN A TECH RÉSUMÉ</p><h3 id="work-away-title">Work away from a screen.</h3>
-          <div class="work-away-grid"><article><h4>Sushi Topia</h4><p class="entry-meta">Sushi chef · Sainte-Anne-de-Bellevue</p><p>I worked as a sushi chef in a basement in Sainte-Anne-de-Bellevue. A very different setting from a software team, and part of my story just the same.</p></article><article><h4>Chalet Thai</h4><p class="entry-meta">Dishwashing & food prep · Sainte-Anne-de-Bellevue</p><p>I washed dishes and handled food prep at Chalet Thai, also in Sainte-Anne-de-Bellevue.</p></article></div>
+          <p class="eyebrow">RESTAURANT WORK</p><h3 id="work-away-title">Restaurant experience</h3>
+          <div class="work-away-grid"><article><h4>Sushi Topia</h4><p class="entry-meta">Sushi chef · Sainte-Anne-de-Bellevue</p><p>I worked as a sushi chef in a basement in Sainte-Anne-de-Bellevue.</p></article><article><h4>Chalet Thai</h4><p class="entry-meta">Dishwashing & food prep · Sainte-Anne-de-Bellevue</p><p>I washed dishes and handled food prep at Chalet Thai, also in Sainte-Anne-de-Bellevue.</p></article></div>
         </section>
         <article class="portfolio-entry">
           <div class="entry-heading"><div><h3>Concordia University</h3><p class="entry-meta">Bachelor of Software Engineering · Montréal</p></div><span class="entry-date">Expected Jun 2028</span></div>
           <p>Studying data structures, operating systems, data analytics, and web programming. Building plenty of things outside class, too.</p>
         </article>
       </div>
-      <div class="portfolio-footer"><a class="text-link" href="/resume/" target="_blank" rel="noopener noreferrer">Read my résumé ↗</a><button class="text-link" data-open="projects-dialog">Next: things I’ve built →</button></div>
+      <div class="portfolio-footer"><a class="text-link" href="/resume/" target="_blank" rel="noopener noreferrer">Read my résumé ↗</a><button class="text-link" data-open="projects-dialog">Next: projects →</button></div>
     </dialog>
 
     <dialog id="projects-dialog" class="portfolio-dialog portfolio-dialog-wide folio-dialog" aria-labelledby="projects-title">
-      ${dialogTop('02', 'THINGS I’VE BUILT')}
-      <h2 id="projects-title">Ideas worth staying up for.</h2>
-      <p class="dialog-lead">Some weekend projects, some hackathons, and one very good excuse to keep thinking about hiking.</p>
+      ${dialogTop('02', 'PROJECTS')}
+      <h2 id="projects-title">Projects</h2>
+      <p class="dialog-lead">Personal projects and hackathon entries.</p>
       ${readerShell('projects')}
-      <div class="portfolio-footer"><a class="text-link" href="/projects/">All projects ↗</a><button class="text-link" data-open="outside-dialog">Next: away from the screen →</button></div>
+      <div class="portfolio-footer"><a class="text-link" href="/projects/">All projects ↗</a><button class="text-link" data-open="outside-dialog">Next: outside →</button></div>
     </dialog>
 
     <dialog id="outside-dialog" class="portfolio-dialog portfolio-dialog-wide folio-dialog" aria-labelledby="outside-title">
-      ${dialogTop('03', 'AWAY FROM THE SCREEN')}
-      <h2 id="outside-title">The other kind of adventure.</h2>
-      <p class="dialog-lead">Usually somewhere with a little elevation. Sometimes just by a lake. These are a few of my own snapshots from the time in between.</p>
+      ${dialogTop('03', 'OUTSIDE')}
+      <h2 id="outside-title">Outside</h2>
+      <p class="dialog-lead">Photos from hiking, running, camping, and golf.</p>
       ${readerShell('outside')}
-      <div class="portfolio-footer"><button class="text-link" data-open="contact-dialog">Have a trail recommendation? Say hello →</button><a class="text-link" href="/outside/">Read the full story ↗</a></div>
+      <div class="portfolio-footer"><button class="text-link" data-open="contact-dialog">Contact me →</button><a class="text-link" href="/outside/">Read more ↗</a></div>
     </dialog>
 
     <dialog id="contact-dialog" class="portfolio-dialog" aria-labelledby="contact-title">
-      ${dialogTop('04', 'SAY HELLO')}
-      <h2 id="contact-title">Good things start<br>with a conversation.</h2>
-      <p class="dialog-lead">For work, a side project, or a trail I should know about. I’d be happy to hear from you.</p>
+      ${dialogTop('04', 'CONTACT')}
+      <h2 id="contact-title">Contact</h2>
+      <p class="dialog-lead">Email me about work, projects, or hiking.</p>
       <a class="contact-address" href="mailto:huzaifafareed817@gmail.com">huzaifafareed817@gmail.com <span aria-hidden="true">↗</span></a>
       <div class="contact-links">${external('https://github.com/zaifnatra', 'GitHub')}${external('https://linkedin.com/in/huzaifa-fareed', 'LinkedIn')}<a href="/resume/" target="_blank" rel="noopener noreferrer">Résumé <span aria-hidden="true">↗</span></a></div>
       <p class="contact-location"><span class="eyebrow">BASED IN</span><br>Montréal, Québec</p>
-      <div class="portfolio-footer"><a class="text-link" href="/about/">Read the full story ↗</a><button class="text-link" data-close>Back to the trail →</button></div>
+      <div class="portfolio-footer"><a class="text-link" href="/about/">Read more ↗</a><button class="text-link" data-close>Back to the trail →</button></div>
     </dialog>
   `);
   mountReaders();

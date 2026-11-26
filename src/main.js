@@ -79,7 +79,7 @@ async function enterTrail() {
     canvas.inert = false; canvas.tabIndex = 0;
     document.body.classList.add('walking');
     $('.scene-hud').hidden = false;
-    $('#footer-location').textContent = 'My favorite starting point.';
+    $('#footer-location').textContent = 'Adirondak Loj';
     $('#footer-note').textContent = 'Adirondak Loj · a personal interpretation';
     window.scrollTo(0, 0);
     scene.start(); scene.resize(); scene.setLookEnabled(!document.querySelector('dialog[open]'));
@@ -110,7 +110,7 @@ function exitTrail() {
   document.body.classList.remove('walking');
   $('.scene-hud').hidden = true;
   $('#footer-location').textContent = 'Lake Colden, looking toward Avalanche Pass';
-  $('#footer-note').textContent = 'A real photograph from the trail beyond.';
+  $('#footer-note').textContent = 'Photo by Thomas Piaget';
   $('#enter-button').focus({ preventScroll: true });
 }
 function updateHud() {
@@ -132,7 +132,7 @@ $('#enter-button').addEventListener('click', enterTrail);
 $('#exit-button').addEventListener('click', exitTrail);
 $('#experience-button').addEventListener('click', () => { if (!walking) enterTrail(); else { scene.reset(); $('#welcome-note').classList.remove('dismissed'); } });
 $('#wander-button').addEventListener('click', () => { $('#welcome-note').classList.add('dismissed'); canvas.focus({ preventScroll: true }); });
-$('#reset-button').addEventListener('click', () => { scene?.reset(); engine?.set_bob(Number(motion.checked)); $('#welcome-note').classList.remove('dismissed'); notify('Back in the clearing. Your next story is a few steps away.'); });
+$('#reset-button').addEventListener('click', () => { scene?.reset(); engine?.set_bob(Number(motion.checked)); $('#welcome-note').classList.remove('dismissed'); notify('View reset.'); });
 $('#interact-button').addEventListener('click', () => scene?.interact());
 motion.addEventListener('change', () => { engine?.set_bob(Number(motion.checked)); scene?.setReducedMotion?.(!motion.checked); });
 $('#register-map').addEventListener('click', () => { $('#register-dialog').close(); openDialog('map-dialog'); });
@@ -169,7 +169,7 @@ $('#register-form').addEventListener('submit', event => {
   let stored = true;
   try { localStorage.setItem('loj-trail-register', JSON.stringify(entry)); } catch { stored = false; }
   showEntry(entry);
-  notify(stored ? 'Your note is saved in this browser. Happy wandering.' : 'Your note is here for this visit. Browser storage is unavailable.');
+  notify(stored ? 'Your note is saved in this browser.' : 'Your note is here for this visit. Browser storage is unavailable.');
 });
 $('#visitor-name').addEventListener('input', () => $('#visitor-name').setCustomValidity(''));
 

@@ -246,8 +246,8 @@ export async function createTrailScene({ canvas, engine, onInteract = () => {}, 
   const mapMat=material({map:mapTex,roughness:.9});mesh(new THREE.PlaneGeometry(1.94,1.35),mapMat,[1.02,1.48,.14],kiosk).castShadow=false;
   const noticeTex=texture(1024,(ctx,s)=>{
     ctx.fillStyle='#ede8d5';ctx.fillRect(0,0,s,s);ctx.fillStyle='#283d2f';ctx.textAlign='center';ctx.font='bold 75px Georgia';ctx.fillText('WELCOME,',s/2,140);ctx.fillText('HIKER.',s/2,230);
-    ctx.font='38px sans-serif';['Please sign the trail register','before you head into the woods.','','Leave only footprints.','Take only memories.'].forEach((t,i)=>ctx.fillText(t,s/2,350+i*65));
-    ctx.strokeStyle='#9b9c82';ctx.lineWidth=2;ctx.strokeRect(80,720,864,200);ctx.font='bold 30px sans-serif';ctx.fillText('REGISTER BELOW',s/2,790);ctx.font='27px sans-serif';ctx.fillText('Keep the wilderness wild.',s/2,865);
+    ctx.font='38px sans-serif';['Please sign the trail register','before you head into the woods.','','Stay on marked trails.','Carry out your trash.'].forEach((t,i)=>ctx.fillText(t,s/2,350+i*65));
+    ctx.strokeStyle='#9b9c82';ctx.lineWidth=2;ctx.strokeRect(80,720,864,200);ctx.font='bold 30px sans-serif';ctx.fillText('REGISTER BELOW',s/2,790);ctx.font='27px sans-serif';ctx.fillText('Virtual trail register',s/2,865);
   });
   mesh(new THREE.PlaneGeometry(1.8,1.35),material({map:noticeTex,roughness:1}),[-1.02,1.48,.14],kiosk).castShadow=false;
   box(1.2,.42,.28,wood,[-1.02,.7,.28],kiosk);const lid=box(1.3,.055,.45,wood,[-1.02,.94,.35],kiosk);lid.rotation.x=.11;
@@ -281,23 +281,23 @@ export async function createTrailScene({ canvas, engine, onInteract = () => {}, 
   for(let i=0;i<11;i++)box(.245,1.7,.025,wood,[-1.25+i*.25,1.73,.065],workBoard);
   box(3,.09,.4,darkWood,[0,2.67,0],workBoard);
   const workTitle=panelTexture(1300,180,(ctx,w,h)=>{
-    ctx.fillStyle='#263d32';ctx.fillRect(0,0,w,h);ctx.fillStyle='#eee4c8';ctx.font='bold 57px Georgia';ctx.fillText('EXPERIENCE',58,83);ctx.font='22px sans-serif';ctx.fillStyle='#b6bba0';ctx.fillText('HUZAIFA FAREED  /  PEOPLE, SOFTWARE & USEFUL THINGS',60,133);
+    ctx.fillStyle='#263d32';ctx.fillRect(0,0,w,h);ctx.fillStyle='#eee4c8';ctx.font='bold 57px Georgia';ctx.fillText('EXPERIENCE',58,83);ctx.font='22px sans-serif';ctx.fillStyle='#b6bba0';ctx.fillText('HUZAIFA FAREED  /  SOFTWARE ENGINEERING',60,133);
   });
   pinPaper(workBoard,0,2.28,.09,2.6,.36,workTitle);
-  const employers=[['shopify','01','Shopify','Building for merchants.','#b4c092'],['mlh','02','Meta × MLH','Learning by building together.','#aabdc5'],['bombardier','03','Bombardier','Software, in the real world.','#cbb595']];
+  const employers=[['shopify','01','Shopify','Streaming infrastructure.','#b4c092'],['mlh','02','Meta × MLH','Production engineering.','#aabdc5'],['bombardier','03','Bombardier','Power BI, SQL, and Java.','#cbb595']];
   for(const [i,[key,number,name,copy,color]] of employers.entries()){
     const note=panelTexture(480,630,(ctx,w,h)=>{
       ctx.fillStyle='#e5dfcd';ctx.fillRect(0,0,w,h);ctx.fillStyle=color;ctx.fillRect(0,0,w,17);
       ctx.fillStyle='#79816d';ctx.font='26px monospace';ctx.fillText(number,38,83);ctx.fillStyle='#26392e';ctx.font='bold 45px Georgia';ctx.fillText(name,35,194);
       ctx.font='25px sans-serif';const words=copy.split(' ');let line='',y=270;for(const word of words){if(ctx.measureText(line+word).width>400){ctx.fillText(line,37,y);line='';y+=37;}line+=word+' ';}ctx.fillText(line,37,y);
       ctx.strokeStyle='#b6b6a1';ctx.lineWidth=1;for(let k=0;k<5;k++){ctx.beginPath();ctx.moveTo(38,390+k*28);ctx.lineTo(420-(k%2)*70,390+k*28);ctx.stroke();}
-      ctx.fillStyle='#596951';ctx.font='24px monospace';ctx.fillText('OPEN FIELD NOTE ↗',37,578);
+      ctx.fillStyle='#596951';ctx.font='24px monospace';ctx.fillText('READ EXPERIENCE ↗',37,578);
     });
     const fieldNote=pinPaper(workBoard,(i-1)*.85,1.48,.105,.77,1.01,note,(i-1)*.025);
     workBoard.updateWorldMatrix(true,true);
     interactive(fieldNote,`experience-${key}`,`Read about ${name}`,fieldNote.getWorldPosition(new THREE.Vector3()).toArray());
   }
-  interactive(workBoard,'experience','Read my work field notes',[-5,1.6,-4]);
+  interactive(workBoard,'experience','Read my experience',[-5,1.6,-4]);
 
   const projectsBench=new THREE.Group();projectsBench.position.set(5,0,-3);scene.add(projectsBench);
   for(const x of [-1.1,1.1]){box(.17,.67,.46,darkWood,[x,.34,0],projectsBench);box(.57,.1,.67,darkWood,[x,.09,0],projectsBench);}
@@ -376,14 +376,14 @@ export async function createTrailScene({ canvas, engine, onInteract = () => {}, 
   const mugInside=mesh(new THREE.CircleGeometry(.09,20),material({color:'#3d4131',roughness:1}),[.98,.976,0],projectsBench);mugInside.rotation.x=-Math.PI/2;
   const handle=mesh(new THREE.TorusGeometry(.075,.015,8,16),enamel,[1.11,.89,0],projectsBench);handle.rotation.y=Math.PI/2;
   const pencil=mesh(new THREE.CylinderGeometry(.009,.009,.32,6),material({color:'#a88840',roughness:.8}),[-1,.8,.06],projectsBench);pencil.rotation.z=1.3;
-  const benchLabel=panelTexture(1200,150,(ctx,w,h)=>{ctx.fillStyle='#43503b';ctx.fillRect(0,0,w,h);ctx.fillStyle='#e7dfc7';ctx.font='bold 63px Georgia';ctx.fillText('PROJECTS',45,96);ctx.font='26px monospace';ctx.fillText('OPEN THE FIELD NOTEBOOK ↗',520,91);});
+  const benchLabel=panelTexture(1200,150,(ctx,w,h)=>{ctx.fillStyle='#43503b';ctx.fillRect(0,0,w,h);ctx.fillStyle='#e7dfc7';ctx.font='bold 63px Georgia';ctx.fillText('PROJECTS',45,96);ctx.font='26px monospace';ctx.fillText('OPEN PROJECTS ↗',520,91);});
   mesh(new THREE.PlaneGeometry(2.4,.3),material({map:benchLabel,roughness:1}),[0,.59,.335],projectsBench).castShadow=false;
   interactive(projectsBench,'projects','Open the project notebook',[5,1.05,-3]);
 
   const outsideStand=new THREE.Group();outsideStand.position.set(4,0,3);outsideStand.rotation.y=-1.65;scene.add(outsideStand);
   for(const x of [-.58,.58])box(.1,1.98,.1,darkWood,[x,.99,0],outsideStand);
   box(1.75,1.46,.08,wood,[0,1.43,0],outsideStand);
-  const outsideTitle=panelTexture(1000,150,(ctx,w,h)=>{ctx.fillStyle='#364636';ctx.fillRect(0,0,w,h);ctx.fillStyle='#e9dfc4';ctx.font='bold 63px Georgia';ctx.fillText('OUTSIDE',40,99);ctx.font='23px monospace';ctx.fillText('THE BITS IN BETWEEN',420,94);});
+  const outsideTitle=panelTexture(1000,150,(ctx,w,h)=>{ctx.fillStyle='#364636';ctx.fillRect(0,0,w,h);ctx.fillStyle='#e9dfc4';ctx.font='bold 63px Georgia';ctx.fillText('OUTSIDE',40,99);ctx.font='23px monospace';ctx.fillText('HIKING, RUNNING & MORE',420,94);});
   pinPaper(outsideStand,0,2.05,.075,1.65,.2,outsideTitle);
   // The photo album sits clearly in front of its board, including its caption.
   const albumFrame=box(1.55,1.02,.025,paper,[0,1.38,.09],outsideStand);
