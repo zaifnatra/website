@@ -69,7 +69,7 @@ async function enterTrail() {
   try {
     if (!scene) {
       const [response, { createTrailScene }] = await Promise.all([
-        fetch(`${import.meta.env.BASE_URL}wasm/trail_core.wasm`), import('./scene.js'),
+        fetch(`${import.meta.env.BASE_URL}wasm/trail_core.wasm?v=${import.meta.env.TRAIL_CORE_HASH}`), import('./scene.js'),
       ]);
       if (!response.ok) throw new Error('The movement engine could not be loaded.');
       const { instance } = await WebAssembly.instantiate(await response.arrayBuffer(), {});
