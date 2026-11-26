@@ -9,7 +9,7 @@ npm ci
 npm run dev
 ```
 
-Open `http://localhost:5173/website/`. Node 20.19+ or 22.12+ is required by Vite. The compiled Rust WebAssembly binary is included, so running and deploying the site does not require a Rust installation.
+Open `http://localhost:5173/`. Node 20.19+ or 22.12+ is required by Vite. The compiled Rust WebAssembly binary is included, so running and deploying the site does not require a Rust installation.
 
 ```sh
 npm run lint
@@ -18,7 +18,11 @@ npm run build
 npm run preview
 ```
 
-`npm run deploy` publishes the output to the existing GitHub Pages site. Deployment is not automatic. The `/website/` base path remains in `vite.config.js`.
+`npm run deploy` builds and publishes the site to `zaifnatra/zaifnatra.github.io` (Pages serves `main` at `/`), then updates redirects in the original `zaifnatra/website` repository’s `gh-pages` branch. Source code remains in this repository. Deployment is not automatic.
+
+Clean routes: `/`, `/about/`, `/experience/`, `/projects/`, `/projects/mtl-minted/`, `/outside/`, and `/resume/`. GitHub Pages redirects slashless directory URLs such as `/resume` to `/resume/`. These are real static HTML pages, so direct links and refreshes work without an SPA fallback. The résumé page embeds the PDF and offers a download.
+
+`npm run dev` and `npm run build` generate the section pages from `public/about/index.html` with `scripts/build-pages.mjs`. Update that source to keep the readable portfolio and individual sections consistent. Old `.html` links and `/website/` links forward to the new routes; older public image and PDF links remain available.
 
 ## Explore
 
@@ -39,7 +43,7 @@ npm run preview
 - `src/main.js`: browser interface, automatic WebAssembly loading, local register, illustrated map, and synthesized ambience.
 - `src/portfolio.js`: all portfolio dialogs, verified work history, projects, personal stories, and contact links.
 - `src/styles/theme.css`: responsive photographic landing page and exploration HUD.
-- `public/about.html`, `about.css`, and `about.js`: preserved personal website and résumé links.
+- `public/about/index.html`, `about.css`, and `about.js`: preserved personal website and résumé links.
 - `REFERENCES.md` and `public/textures/SOURCES.md`: sources and reuse information.
 
 This is a Rust-powered web application, not a full Rust renderer: HTML/CSS/JavaScript handle the browser UI, and Three.js handles WebGL. The heavy renderer is loaded only after entering the trail.
@@ -63,15 +67,15 @@ The playable area is the trailhead clearing, not the full route to either summit
 
 A genuinely photorealistic, positionally accurate version needs a licensed 3D scan or a set of overlapping photographs/video of the exact clearing and kiosk. The current scene and Rust movement system provide a base for replacing authored geometry with that captured asset.
 
-The readable portfolio is available in `public/about.html`, updated with the latest résumé and user-confirmed Sushi Topia and Chalet Thai roles. Original asset files are unchanged. Optimized personal photo copies are in `public/images/personal-*.jpg`.
+The readable portfolio is available in `public/about/index.html`, updated with the latest résumé and user-confirmed Sushi Topia and Chalet Thai roles. Original asset files are unchanged. Optimized personal photo copies are in `public/images/personal-*.jpg`.
 
 ### Searchable project documentation
 
-`public/mtl-minted.html` is a static project page covering Huzaifa's Rust/Anchor contribution, the McHacks 13 Best Use of Solana award, and the team's US$1,000 microgrant. The microgrant amount comes directly from Huzaifa; no grant provider or award date is inferred. Keep this page, the entry in `public/about.html`, and `src/portfolio.js` consistent when updating project details.
+`public/projects/mtl-minted/index.html` is a static project page covering Huzaifa's Rust/Anchor contribution, the McHacks 13 Best Use of Solana award, and the team's US$1,000 microgrant. The microgrant amount comes directly from Huzaifa; no grant provider or award date is inferred. Keep this page, the entry in `public/about/index.html`, and `src/portfolio.js` consistent when updating project details.
 
 The project page includes a canonical URL, social preview metadata, and SoftwareSourceCode JSON-LD matching its visible content. `public/sitemap.xml` lists the homepage, readable portfolio, and project page. URLs use the GitHub Pages address configured in `package.json`; update all canonical, social, structured-data, and sitemap URLs together if the site moves.
 
-After deployment, submit `https://zaifnatra.github.io/website/sitemap.xml` in Google Search Console and request indexing for the project page. Local changes alone are not visible to Google, and indexing is not guaranteed. This project is hosted under `/website/`, so a robots.txt inside this folder would not control the domain-root robots policy.
+After deployment, submit `https://zaifnatra.github.io/sitemap.xml` in Google Search Console and request indexing for the project page. Local changes alone are not visible to Google, and indexing is not guaranteed. `public/robots.txt` is served at the domain root and points crawlers to the sitemap.
 
 The playable bounds are x ±9m and z −19…9m, starting at (0,1.7,2). The irregular parking surface is roughly 16×14m, with the register and personal artifacts a few steps away. Both shader materials and generic environmental photography help the visual atmosphere; it is still authored geometry rather than a measured scan.
 

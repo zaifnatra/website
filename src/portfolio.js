@@ -21,7 +21,7 @@ export const projects = [
     copy: 'A way for artists to mint and tokenize their creative identity on Solana. I wrote the Rust and Anchor programs behind minting, transfers, and transaction history.',
     detail: 'We won Best Use of Solana at McHacks 13, and our team won a US$1,000 microgrant for mtl minted.',
     tech: ['Rust', 'Anchor', 'Solana'],
-    links: [[`${base}mtl-minted.html`, 'Project story'], ['https://devpost.com/software/black-beauty', 'Devpost'], ['https://github.com/zaifnatra/solana', 'Source code']],
+    links: [[`${base}projects/mtl-minted/`, 'Project story'], ['https://devpost.com/software/black-beauty', 'Devpost'], ['https://github.com/zaifnatra/solana', 'Source code']],
   },
   {
     title: 'shorten.it', image: 'project-shorten-it.jpg', kicker: '3rd overall · Meta × MLH PE Hackathon',
@@ -196,7 +196,7 @@ export function mountPortfolio() {
           <p>Studying data structures, operating systems, data analytics, and web programming. Building plenty of things outside class, too.</p>
         </article>
       </div>
-      <div class="portfolio-footer"><a class="text-link" href="./Huzaifa_Fareed_Resume.pdf" target="_blank" rel="noopener noreferrer">Read my résumé ↗</a><button class="text-link" data-open="projects-dialog">Next: things I’ve built →</button></div>
+      <div class="portfolio-footer"><a class="text-link" href="/resume/" target="_blank" rel="noopener noreferrer">Read my résumé ↗</a><button class="text-link" data-open="projects-dialog">Next: things I’ve built →</button></div>
     </dialog>
 
     <dialog id="projects-dialog" class="portfolio-dialog portfolio-dialog-wide folio-dialog" aria-labelledby="projects-title">
@@ -204,7 +204,7 @@ export function mountPortfolio() {
       <h2 id="projects-title">Ideas worth staying up for.</h2>
       <p class="dialog-lead">Some weekend projects, some hackathons, and one very good excuse to keep thinking about hiking.</p>
       ${readerShell('projects')}
-      <div class="portfolio-footer">${external('https://github.com/zaifnatra', 'More on GitHub')}<button class="text-link" data-open="outside-dialog">Next: away from the screen →</button></div>
+      <div class="portfolio-footer"><a class="text-link" href="/projects/">All projects ↗</a><button class="text-link" data-open="outside-dialog">Next: away from the screen →</button></div>
     </dialog>
 
     <dialog id="outside-dialog" class="portfolio-dialog portfolio-dialog-wide folio-dialog" aria-labelledby="outside-title">
@@ -212,7 +212,7 @@ export function mountPortfolio() {
       <h2 id="outside-title">The other kind of adventure.</h2>
       <p class="dialog-lead">Usually somewhere with a little elevation. Sometimes just by a lake. These are a few of my own snapshots from the time in between.</p>
       ${readerShell('outside')}
-      <div class="portfolio-footer"><button class="text-link" data-open="contact-dialog">Have a trail recommendation? Say hello →</button><a class="text-link" href="./about.html">Read the full story ↗</a></div>
+      <div class="portfolio-footer"><button class="text-link" data-open="contact-dialog">Have a trail recommendation? Say hello →</button><a class="text-link" href="/outside/">Read the full story ↗</a></div>
     </dialog>
 
     <dialog id="contact-dialog" class="portfolio-dialog" aria-labelledby="contact-title">
@@ -220,9 +220,9 @@ export function mountPortfolio() {
       <h2 id="contact-title">Good things start<br>with a conversation.</h2>
       <p class="dialog-lead">For work, a side project, or a trail I should know about. I’d be happy to hear from you.</p>
       <a class="contact-address" href="mailto:huzaifafareed817@gmail.com">huzaifafareed817@gmail.com <span aria-hidden="true">↗</span></a>
-      <div class="contact-links">${external('https://github.com/zaifnatra', 'GitHub')}${external('https://linkedin.com/in/huzaifa-fareed', 'LinkedIn')}<a href="./Huzaifa_Fareed_Resume.pdf" target="_blank" rel="noopener noreferrer">Résumé <span aria-hidden="true">↗</span></a></div>
+      <div class="contact-links">${external('https://github.com/zaifnatra', 'GitHub')}${external('https://linkedin.com/in/huzaifa-fareed', 'LinkedIn')}<a href="/resume/" target="_blank" rel="noopener noreferrer">Résumé <span aria-hidden="true">↗</span></a></div>
       <p class="contact-location"><span class="eyebrow">BASED IN</span><br>Montréal, Québec</p>
-      <div class="portfolio-footer"><a class="text-link" href="./about.html">Read the full story ↗</a><button class="text-link" data-close>Back to the trail →</button></div>
+      <div class="portfolio-footer"><a class="text-link" href="/about/">Read the full story ↗</a><button class="text-link" data-close>Back to the trail →</button></div>
     </dialog>
   `);
   mountReaders();

@@ -37,3 +37,7 @@ Use ordinary Maps links for the actual places. [Google's Maps URLs documentation
 ## Parked car and snow
 
 The blue-grey 2012 Volkswagen Jetta TDI is an original, simplified 3D model, informed by the Mk6 sedan proportions in the [Volkswagen 2012 Jetta brochure](https://s3.amazonaws.com/cdn.autoipacket.com/brochures/volkswagen/2012/volkswagen_2012_jetta.pdf). No car photograph, third-party mesh, or brochure artwork is redistributed. Ground snow is procedurally authored.
+
+## Browser icon
+
+The favicon and Apple touch icon are cropped derivatives of Huzaifa’s public GitHub avatar (`https://avatars.githubusercontent.com/u/146299744?v=4`), added at his request. The site serves local copies.

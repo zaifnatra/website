@@ -33,3 +33,12 @@ cv
 .opencode/
 .pi/
 skills.json
+
+# Generated static routes and legacy deployment bundle
+public/experience/
+public/projects/index.html
+public/outside/
+public/about.html
+public/mtl-minted.html
+public/resume.html
+dist-legacy/
