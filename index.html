@@ -1,32 +1,53 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#17251f" />
+  <meta name="description" content="Huzaifa Fareed: software engineer, builder, and ultramarathon runner. Explore my work at Shopify, Meta × MLH, and Bombardier from a small Adirondack trailhead." />
+  <title>Huzaifa Fareed — software & the outdoors</title>
+  <link rel="canonical" href="https://zaifnatra.github.io/website/" />
+  <link rel="sitemap" type="application/xml" href="./sitemap.xml" />
   <link rel="icon" type="image/svg+xml" href="/website/favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Huzaifa Fareed</title>
-  <meta name="description"
-    content="Huzaifa Fareed - software engineering student in Montréal. Software engineer intern at Shopify, Meta x MLH production engineering fellow, hackathon winner." />
-  <meta name="theme-color" content="#ffffff" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Huzaifa Fareed" />
-  <meta property="og:description" content="Software engineering student, outdoor & tech enthusiast." />
-  <meta property="og:url" content="https://zaifnatra.github.io/website/" />
-  <meta name="twitter:card" content="summary" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap"
-    rel="stylesheet" />
-  <script type="module" crossorigin src="/website/assets/index-BTeSdVsy.js"></script>
-  <link rel="stylesheet" crossorigin href="/website/assets/index-DFazUem1.css">
+  <script type="module" crossorigin src="/website/assets/index-CEFi0atT.js"></script>
+  <link rel="stylesheet" crossorigin href="/website/assets/index-BmtlTbkT.css">
 </head>
-
-<body>
-  <div id="root"></div>
+<body class="booting">
+  <div class="landscape" aria-hidden="true"></div>
+  <canvas id="world" inert tabindex="-1" aria-label="First-person Loj trailhead. Use W A S D to walk, drag to look, and E to read the trail register."></canvas>
+  <div class="shade" aria-hidden="true"></div>
+  <header class="masthead">
+    <a href="./" class="brand personal-brand" aria-label="Huzaifa Fareed, home"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M3 30 15 9l8 14 5-8 10 15H3Z" stroke="currentColor" stroke-width="1.5"/><path d="m11 16 4 3 4-3M24 22l4 3 3-4" stroke="currentColor" stroke-width="1.3"/></svg><span>Huzaifa Fareed<span class="brand-sub">SOFTWARE / PEOPLE / THE OUTDOORS</span></span></a>
+    <nav aria-label="Main navigation"><button class="nav-link" id="experience-button">Explore</button><button class="nav-link" data-open="experience-dialog">Experience</button><button class="nav-link" data-open="projects-dialog">Projects</button><button class="nav-link" data-open="outside-dialog">Outside</button><button class="nav-link contact-nav" data-open="contact-dialog">Say hello <span>↗</span></button></nav>
+    <button class="icon-button" id="sound-button" aria-label="Enable forest sound" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4V9Z" stroke="currentColor" stroke-width="1.5"/><path d="m17 9 5 6m0-6-5 6" stroke="currentColor" stroke-width="1.5" id="sound-waves"/></svg></button>
+  </header>
+  <main id="main">
+    <section class="intro" aria-labelledby="intro-heading">
+      <div class="eyebrow"><span class="live-dot"></span> HUZAIFA FAREED / MONTRÉAL</div>
+      <h1 id="intro-heading">Software.<br>And a little <em>fresh air.</em></h1>
+      <p class="intro-copy">I'm a software engineering student at Concordia.<br>I build data infrastructure, make things with friends,<br>and run a little further than planned.</p>
+      <div class="enter-row"><button class="primary-button" id="enter-button"><span>Return to the clearing</span><span aria-hidden="true">↗</span></button><span class="enter-note">No rush.<br>Take a look around.</span></div>
+      <div class="experience-meta"><span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 7V3h4m6 0h4v4M3 13v4h4m6 0h4v-4" stroke="currentColor"/><circle cx="10" cy="10" r="3" stroke="currentColor"/></svg> FIRST-PERSON EXPLORATION</span><i></i><span>DESKTOP + MOBILE</span></div>
+    </section>
+    <aside class="route-card" aria-label="Explore my portfolio"><div class="card-heading"><span>A FEW STOPS ALONG THE WAY</span></div><button class="route-link" data-open="experience-dialog">01 · Where I’ve worked <span>↗</span></button><button class="route-link" data-open="projects-dialog">02 · Things I’ve built <span>↗</span></button><button class="route-link" data-open="outside-dialog">03 · Away from the screen <span>↗</span></button><a class="route-link" href="./about.html">Read the full portfolio <span>↗</span></a></aside>
+    <div class="scene-hud" hidden>
+      <section class="welcome-note" id="welcome-note" aria-labelledby="welcome-title"><span class="eyebrow"><span class="live-dot"></span> SOFTWARE ENGINEER · MONTRÉAL</span><h1 id="welcome-title">Hi, I’m Huzaifa.</h1><p>I build systems at Shopify.<br>And find reasons to get outside.</p><div class="welcome-actions"><button data-open="experience-dialog">A little about my work <span>↗</span></button><button id="wander-button">Just wander</button></div><span class="handwritten">Welcome to my corner of the woods.</span></section>
+      <div class="place-marker"><span class="live-dot"></span> ADIRONDACK LOJ <span>/</span> MY VIRTUAL TRAILHEAD</div>
+      <div class="compass" aria-label="Camera heading"><span>W</span><span>·</span><span id="heading">N</span><span>·</span><span>E</span><i></i></div>
+      <button class="interact-button" id="interact-button" hidden><kbd>E</kbd> <span id="interaction-label">Read the trail register</span><span>↗</span></button>
+      <div class="walk-stats"><span class="live-dot"></span> <span id="walk-distance">0</span> m explored <span class="divider">/</span> <span>Make yourself at home</span></div>
+      <div class="scene-controls"><button class="glass-button" data-open="controls-dialog">Controls <span>?</span></button><button class="glass-button" id="reset-button">Reset view <span>↺</span></button><button class="glass-button" id="exit-button">Photo view <span>↗</span></button></div>
+      <div class="touch-controls" aria-label="Touch movement"><button data-move="forward" aria-label="Walk forward">↑</button><button data-move="left" aria-label="Walk left">←</button><button data-move="back" aria-label="Walk backward">↓</button><button data-move="right" aria-label="Walk right">→</button></div>
+      <div class="walk-hint">W A S D to walk <span>·</span> Drag to look <span>·</span> E to open a story</div>
+    </div>
+  </main>
+  <footer class="footer personal-footer"><div class="footer-place"><span class="pin">⌖</span><div><strong id="footer-location">My favorite starting point.</strong><span id="footer-note">Adirondak Loj · a personal interpretation</span></div></div><div class="chapter-nav" aria-label="Portfolio chapters"><button data-open="experience-dialog"><span>01</span> Experience <span>↗</span></button><button data-open="projects-dialog"><span>02</span> Projects <span>↗</span></button><button data-open="outside-dialog"><span>03</span> Outside <span>↗</span></button></div><div class="footer-links"><button data-open="map-dialog">Trail map ↗</button><a href="./about.html">Read as a page ↗</a><button class="credits-button" data-open="about-dialog" aria-label="Scene credits and references">ⓘ</button></div></footer>
+  <div id="notice" role="status" aria-live="polite"></div>
+  <div id="loading" hidden role="status"><span class="loading-ring"></span><span>Welcome to my corner of the woods.</span><small>Opening the clearing…</small><a href="./about.html">Read my portfolio while it loads ↗</a></div>
+  <dialog id="map-dialog" class="map-dialog"><div class="dialog-top"><span class="eyebrow">HIGH PEAKS / TRAIL NOTES</span><button class="close-button" data-close aria-label="Close trail map">×</button></div><h2>A world beyond<br>the parking lot.</h2><p class="dialog-lead">Two ways into the mountains. One very good place to start.</p><div class="map-layout"><div class="trail-map" id="trail-map"></div><div class="map-notes"><span class="eyebrow">FROM ADIRONDACK LOJ</span><h3>Choose your direction.</h3><div class="trail-option"><span class="trail-color blue"></span><div><strong>Algonquin Peak</strong><p>Follow the Algonquin Trail at the junction. Wright Peak branches off along the ascent.</p></div></div><div class="trail-option"><span class="trail-color yellow"></span><div><strong>Lake Colden</strong><p>Continue toward Marcy Dam, then Avalanche Pass and Avalanche Lake.</p></div></div><a class="primary-button map-google" href="https://www.google.com/maps/search/?api=1&query=Adirondak+Loj+High+Peaks+Information+Center" target="_blank" rel="noopener noreferrer">Open trailhead in Google Maps <span>↗</span></a><p class="map-caption">Illustrated route overview, not to scale. The walkable scene covers the trailhead clearing; the mountain routes are shown for context.</p><a class="text-link" href="https://adk.org/avalanche-pass-trail/" target="_blank" rel="noopener noreferrer">Trail information from ADK ↗</a></div></div></dialog>
+  <dialog id="register-dialog"><div class="dialog-top"><span class="eyebrow">ADIRONDACK LOJ / TRAIL REGISTER</span><button class="close-button" data-close aria-label="Close trail register">×</button></div><h2>Leave a little<br>of yourself here.</h2><p class="dialog-lead">A virtual trail register. Your note stays in this browser.</p><form id="register-form"><label for="visitor-name">YOUR NAME</label><input id="visitor-name" name="name" autocomplete="given-name" maxlength="50" placeholder="Fellow wanderer" required /><label for="destination">WHERE ARE YOU HEADING?</label><select id="destination" name="destination"><option>Just looking around</option><option>Algonquin Peak</option><option>Lake Colden</option><option>Avalanche Pass</option></select><label for="visitor-note">A NOTE FOR THE TRAIL</label><textarea id="visitor-note" name="note" maxlength="240" rows="3" placeholder="Something worth remembering…"></textarea><button type="submit" class="primary-button">Sign the register <span>↗</span></button><p class="map-caption">A personal keepsake, not an official hiking registration.</p></form><div id="saved-entry" hidden></div><button class="text-link" id="register-map">Look at the trail map ↗</button></dialog>
+  <dialog id="controls-dialog"><div class="dialog-top"><span class="eyebrow">TAKE YOUR TIME</span><button class="close-button" data-close aria-label="Close controls">×</button></div><h2>A few bearings.</h2><dl class="controls-list"><div><dt><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></dt><dd>Walk around the clearing</dd></div><div><dt>Click & drag</dt><dd>Look around</dd></div><div><dt><kbd>E</kbd></dt><dd>Use the highlighted action; next page in a notebook or album</dd></div><div><dt><kbd>Esc</kbd></dt><dd>Release the mouse or close a panel</dd></div><div><dt>On your phone</dt><dd>Use the arrows to walk; drag the scene to look.</dd></div></dl><label class="toggle-label"><input type="checkbox" id="motion-toggle" /> Gentle walking motion</label><p class="map-caption">The scene is a handcrafted interpretation of the Loj clearing. The exact terrain and sign positions have not been surveyed.</p></dialog>
+  <dialog id="about-dialog"><div class="dialog-top"><span class="eyebrow">BEHIND THE EXPERIENCE</span><button class="close-button" data-close aria-label="Close field note">×</button></div><h2>Some places<br>pull you back.</h2><p class="dialog-lead">A personal portfolio for the things I build and the places I come back to.</p><p>This first chapter is a walkable interpretation of the Adirondak Loj trailhead: forest, gravel, a wooden register, and the promise of the mountains beyond. The work board, project notebook, and personal photos are additions for this portfolio. The 3D clearing is an artistic reconstruction, not a scan or Google Street View.</p><p>Movement and collision run in Rust, compiled to WebAssembly. Three.js draws the scene. Forest sound is synthesized, not a field recording.</p><h3>Photography & references</h3><p>Generic forest environment and scanned floor/bark materials from <a href="https://polyhaven.com/a/forest_slope" target="_blank" rel="noopener noreferrer">Poly Haven</a> (<a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer">CC0</a>). These materials are not photographs of the Loj.</p><p>The register shelter is modeled with reference to <a href="https://www.wamc.org/north-country-news/2019-08-09/new-initiative-targets-hiker-education-to-relieve-adirondack-high-peaks-overcrowding" target="_blank" rel="noopener noreferrer">WAMC’s photograph of the Loj trail register</a>. That photograph is not reproduced here.</p><p><a href="https://commons.wikimedia.org/wiki/File:Lake_Colden_looking_toward_Avalanche_Pass.jpg" target="_blank" rel="noopener noreferrer">Lake Colden, looking toward Avalanche Pass</a> and <a href="https://commons.wikimedia.org/wiki/File:Avalanche_Lake_NY.jpg" target="_blank" rel="noopener noreferrer">Avalanche Lake</a> by Thomas Piaget, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener noreferrer">CC BY 2.0</a>. Images resized; displayed with cropping and a color overlay.</p><a class="text-link" href="./about.html">More about me ↗</a></dialog>
+  <noscript><div class="noscript">The interactive trail needs JavaScript. You can still <a href="./about.html">read about Huzaifa</a> or <a href="https://www.google.com/maps/search/?api=1&query=Adirondak+Loj">visit the trailhead on Google Maps</a>.</div></noscript>
 </body>
-
 </html>
