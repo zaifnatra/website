@@ -24,3 +24,12 @@ dist-ssr
 *.sw?
 legacy_backup
 cv
+
+# Local agent skill installations
+.agents/
+.claude/
+.codex/
+.cursor/
+.opencode/
+.pi/
+skills.json
