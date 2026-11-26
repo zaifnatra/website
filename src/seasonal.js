@@ -124,7 +124,7 @@ export function addWinterDetails({ scene, assets, renderer }) {
     for(let i=1;i<positions.count;i++){const r=.94+random()*.12;positions.setX(i,positions.getX(i)*r);positions.setY(i,positions.getY(i)*r);}geometry.computeVertexNormals();
     const patch=mesh(geometry,snow,[x,y,z],parent);patch.rotation.set(-Math.PI/2,0,angle);patch.scale.set(width,depth,1);patch.castShadow=false;patch.renderOrder=2;return patch;
   }
-  const patches=[[-7.5,-4,2.1,3],[-7.7,1,1.2,2.5],[-7.8,6.2,2.5,1.5],[7.7,1,1.8,2.7],[7.8,-5.5,2.1,3],[5.6,-11,2.1,3],[-5.2,-12,3,2.4],[-2.8,-17,2.3,2.4],[6,-17,2.3,3],[1,8.2,2.2,1.1],[5.5,7.3,2.4,1.2],[-3,7.8,2.2,1.3],[-3.1,-1,1.3,.7],[2.9,.8,.7,1.2],[-3.8,-8.8,1,.6],[2.4,-11,.8,.65]];
+  const patches=[[-7.5,-4,2.1,3],[-7.7,1,1.2,2.5],[-7.8,6.2,2.5,1.5],[7.7,1,1.8,2.7],[7.8,-5.5,2.1,3],[8.4,-12,1.05,3],[-5.2,-12,3,2.4],[-2.8,-17,2.3,2.4],[6,-17,2.3,3],[1,8.2,2.2,1.1],[5.5,7.3,2.4,1.2],[-3,7.8,2.2,1.3],[-3.1,-1,1.3,.7],[2.9,.8,.7,1.2],[-3.8,-8.8,1,.6],[2.4,-11,.8,.65]];
   for(const [x,z,w,d] of patches)snowPatch(x,z,w,d,.014,winter,random()*6.28);
   // Low banks are real volumes under their soft snowy surface.
   const bankMat=mat({color:'#dce6e7',roughness:1});

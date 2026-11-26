@@ -17,7 +17,10 @@ let audioGain;
 let soundEnabled = false;
 let birdTimer;
 let lastHudUpdate = 0;
-const minimap = mountMinimap({ onOpen: id => openDialog(`${id}-dialog`) });
+const minimap = mountMinimap({ onOpen: id => {
+  if(id==='campsite'){scene?.visitCampsite();$('#welcome-note').classList.add('dismissed');canvas.focus({preventScroll:true});notify('Camp. Click the tent, fire, coffee or lantern when nearby.');}
+  else openDialog(`${id}-dialog`);
+}, onTime: mode=>scene?.setTime(mode) });
 document.addEventListener('portfolio-page-change', event => scene?.setPage?.(event.detail.kind,event.detail.index));
 const motion = $('#motion-toggle');
 motion.checked = !matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -72,10 +75,11 @@ async function enterTrail() {
       const { instance } = await WebAssembly.instantiate(await response.arrayBuffer(), {});
       engine = instance.exports;
       engine.reset();
-      scene = await createTrailScene({ canvas, engine, onInteract: (id,index) => { if(index!==undefined)setPortfolioPage(id,index); openDialog(`${id}-dialog`); }, onPageChange: (kind,index) => setPortfolioPage(kind,index) });
+      scene = await createTrailScene({ canvas, engine, onNotice: notify, onInteract: (id,index) => { if(index!==undefined)setPortfolioPage(id,index); openDialog(`${id}-dialog`); }, onPageChange: (kind,index) => setPortfolioPage(kind,index) });
 
     }
     engine.set_bob(Number(motion.checked));
+    scene.setReducedMotion(!motion.checked);
     walking = true;
     canvas.inert = false; canvas.tabIndex = 0;
     document.body.classList.add('walking');

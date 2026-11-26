@@ -38,3 +38,9 @@ The clearing is an artistic recreation, not a measured scan. The route beyond is
 ## Personal content
 
 Use the latest user-supplied résumé for technical achievements, and the user’s own descriptions for restaurant work and personal lessons. Keep both technology and non-technology work visible. No employer dates or college details are inferred. Include authentic project screenshots and personal photos; optimize copies without overwriting originals.
+
+## Campsite
+
+A small personal campsite sits northeast of the portfolio clearing. A rust-orange dome tent, sleeping pad and bag, laced boots, trekking poles and a Haglöfs L.I.M 35-inspired pack surround a stone fire pit. Coffee steams on a cut stump; a lantern lights the tent entrance. Keep snow patchy and the fire area exposed.
+
+The minimap's Visit camp shortcut arrives at a tested, collision-free view. Users can walk up and click the tent door, stoke the fire, brew coffee or switch the lantern. The pack opens the Hiking and camping album page. Dusk is optional; daylight remains the default. GPU particles share the main animation loop and parent disposal registry. Reduced motion hides steam, smoke, sparks and motes, freezes flame motion, and disables light flicker and walking bob. Mobile uses fewer particles and existing touch controls.

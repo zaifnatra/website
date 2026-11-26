@@ -46,3 +46,9 @@ The favicon and Apple touch icon are cropped derivatives of Huzaifa’s public G
 
 - [Bree Serif](https://github.com/google/fonts/tree/main/ofl/breeserif) for headings and the 3D signs; [Cabin](https://github.com/google/fonts/tree/main/ofl/cabin) for reading text and controls. Original font files are self-hosted in `public/fonts/`, with their SIL Open Font License texts.
 - [Anthropic frontend-design skill](https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md) informed the type direction and mobile review. The implementation follows the existing trailhead concept; design notes are in `DESIGN.md`.
+
+## Personal campsite
+
+The campsite, tent, sleeping gear, coffee equipment, fire pit, lantern and particles are original procedural models. The campsite is a personal addition to the fictional clearing, not a mapped facility at the Loj.
+
+The pack is an authored interpretation of the [Haglöfs L.I.M 35](https://www.haglofs.com/en/activities/hiking/hiking-backpacks-bags/lim-35_134116-6076922AT), using the manufacturer's 59 × 31 × 25 cm proportions, fixed lid, elastic side pockets, compression cord and padded harness as references. No product photographs or third-party models are redistributed.

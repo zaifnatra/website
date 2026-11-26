@@ -1,9 +1,10 @@
 import * as THREE from 'three';
+import { addCampsite } from './campsite.js';
 import { addWinterDetails } from './seasonal.js';
 import { projects, hobbies } from './portfolio.js';
 
 // An authored woodland clearing, informed by the Loj. This is not surveyed geometry.
-export async function createTrailScene({ canvas, engine, onInteract = () => {}, onPageChange = () => {}, onReady = () => {}, onError = () => {} }) {
+export async function createTrailScene({ canvas, engine, onInteract = () => {}, onPageChange = () => {}, onReady = () => {}, onNotice = () => {}, onError = () => {} }) {
   // Canvas labels are baked once; load their faces before creating textures.
   await Promise.allSettled([
     document.fonts.load('400 32px "Bree Serif"'),
@@ -263,7 +264,7 @@ export async function createTrailScene({ canvas, engine, onInteract = () => {}, 
     const x=side*(7.9+i*3.2);box(.17,1,.17,wood,[x,.5,-8.8]);box(2,.13,.13,wood,[x+side*1,.7,-8.8]);
   }
   // Trail direction fingerboards, close enough to inspect while walking.
-  const directionGroup=new THREE.Group();directionGroup.position.set(5.4,0,-12);scene.add(directionGroup);
+  const directionGroup=new THREE.Group();directionGroup.position.set(.9,0,-13.8);scene.add(directionGroup);
   box(.17,2.45,.17,darkWood,[0,1.2,0],directionGroup);
   for(const [text,y] of [['ALGONQUIN PEAK  ↗',2.13],['LAKE COLDEN  ↗',1.77]]){
     const signTex=texture(1024,(ctx,s)=>{ctx.fillStyle='#354b35';ctx.fillRect(0,0,s,s);ctx.fillStyle='#f4edce';ctx.font='bold 70px Cabin';ctx.textAlign='center';ctx.translate(s/2,s/2);ctx.scale(1,7);ctx.fillText(text,0,23);});
@@ -412,10 +413,11 @@ export async function createTrailScene({ canvas, engine, onInteract = () => {}, 
   // Floating pollen catches the afternoon light, with subdued motion.
   const motesGeo=new THREE.BufferGeometry();const motePositions=new Float32Array(180*3);
   for(let i=0;i<180;i++){motePositions[i*3]=range(-22,22);motePositions[i*3+1]=range(.4,10);motePositions[i*3+2]=range(-35,18);}motesGeo.setAttribute('position',new THREE.BufferAttribute(motePositions,3));assets.add(motesGeo);
-  const motesMat=new THREE.PointsMaterial({color:'#fff2c5',size:.035,transparent:true,opacity:.45,depthWrite:false});assets.add(motesMat);const motes=new THREE.Points(motesGeo,motesMat);scene.add(motes);
+  const moteTexture=texture(32,(ctx,s)=>{const g=ctx.createRadialGradient(s/2,s/2,0,s/2,s/2,s/2);g.addColorStop(0,'#fff');g.addColorStop(1,'#fff0');ctx.fillStyle=g;ctx.fillRect(0,0,s,s);});
+  const motesMat=new THREE.PointsMaterial({map:moteTexture,color:'#fff2c5',size:.025,transparent:true,opacity:.3,depthWrite:false});assets.add(motesMat);const motes=new THREE.Points(motesGeo,motesMat);scene.add(motes);
   let active=false,disposed=false,raf=0,previous=0,elapsed=0,mobileForward=0,mobileStrafe=0,yawDelta=0,pitchDelta=0,drag=null,lookEnabled=true;
-  const keys=new Set();const cleanup=[];const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  engine.set_bob?.(reducedMotion ? 0 : 1);
+  const keys=new Set();const cleanup=[];let reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  engine.set_bob?.(reducedMotion ? 0 : 1);motes.visible=!reducedMotion;
   const listen=(target,name,fn,opts)=>{target.addEventListener(name,fn,opts);cleanup.push(()=>target.removeEventListener(name,fn,opts));};
   const raycaster=new THREE.Raycaster();const pointer=new THREE.Vector2();
   function distanceTo(point){return Math.hypot(engine.get_x()-point.position.x,engine.get_z()-point.position.z);}
@@ -480,6 +482,7 @@ export async function createTrailScene({ canvas, engine, onInteract = () => {}, 
     }
     yawDelta=pitchDelta=0;if(!reducedMotion){motes.position.x=Math.sin(elapsed*.09)*.7;motes.position.y=Math.sin(elapsed*.14)*.18;}
     if(pageTurn){const t=Math.min(1,(now-pageTurn.start)/360);const eased=t*t*(3-2*t);leaf.rotation.y=pageTurn.direction>0?-Math.PI*eased:-Math.PI*(1-eased);if(t===1){leaf.visible=false;pageTurn=null;}}
+    campsite.update(dt,reducedMotion,canvas.height);
     render();raf=requestAnimationFrame(frame);
   }
   listen(window,'resize',resize);canvas.style.touchAction='none';canvas.tabIndex=0;canvas.setAttribute('aria-label','First-person woodland trailhead. Use W A S D to walk, arrow keys to turn, drag to look, and E near a field note or the register.');
@@ -517,12 +520,16 @@ export async function createTrailScene({ canvas, engine, onInteract = () => {}, 
   })));
   paintProject();paintOutside();
   addWinterDetails({ scene, assets, renderer });
+  const campsite=addCampsite({scene,assets,coarse,interactive,onInteract,onNotice});
+  campsite.update(0,reducedMotion,canvas.height);
   resize();onReady();
   return {
     start(){if(disposed||active)return;active=true;previous=performance.now();raf=requestAnimationFrame(frame);},
     stop(){active=false;cancelAnimationFrame(raf);clearInput();if(document.pointerLockElement===canvas)document.exitPointerLock();},
     resize,
-    setTime(mode){const evening=mode==='evening'||mode==='golden';sun.color.set(evening?'#ffd4a0':'#fff2cf');sun.intensity=evening?2:2.5;sun.position.set(-28,evening?17:36,17);skyLight.intensity=evening?1.3:1.65;scene.fog.color.set(evening?'#a9a08c':'#aab7a2');if(scene.background.isColor)scene.background.set(evening?'#bdc0b3':'#aec1bf');else scene.backgroundIntensity=evening?.65:.85;render();},
+    setTime(mode){const evening=mode==='evening'||mode==='golden';sun.color.set(evening?'#ffd4a0':'#fff2cf');sun.intensity=evening?.62:2.5;sun.position.set(-28,evening?17:36,17);skyLight.intensity=evening?.65:1.65;scene.fog.color.set(evening?'#a9a08c':'#aab7a2');if(scene.background.isColor)scene.background.set(evening?'#bdc0b3':'#aec1bf');else scene.backgroundIntensity=evening?.28:.85;render();},
+    visitCampsite(){clearInput();engine.visit_camp();render();},
+    setReducedMotion(value){reducedMotion=value;motes.visible=!value;engine.set_bob?.(value?0:1);campsite.update(0,value,canvas.height);},
     setMovement(forward,strafe){mobileForward=forward;mobileStrafe=strafe;},
     reset(){clearInput();engine.reset();render();},
     setLookEnabled(value){lookEnabled=value;if(!value){clearInput();if(document.pointerLockElement===canvas)document.exitPointerLock();}},
