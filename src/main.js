@@ -1,6 +1,7 @@
 import './styles/theme.css';
 import { mountPortfolio, setPortfolioPage } from './portfolio.js';
 import { mountMinimap } from './minimap.js';
+import './styles/type-layout.css';
 mountPortfolio();
 
 const $ = (selector) => document.querySelector(selector);

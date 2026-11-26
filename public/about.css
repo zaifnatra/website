@@ -1,5 +1,6 @@
+@import url('/type.css');
 :root {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-body);
   color: #333c34;
   background: #f8f9f5;
   font-synthesis: none;
@@ -11,7 +12,7 @@
   --green: #45694b;
   --line: #dce1d6;
   --orange: #ad512e;
-  --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --mono: var(--font-body);
 }
 
 * {
@@ -63,6 +64,11 @@ h1,
 h2,
 h3 {
   color: var(--ink);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 400;
 }
 
 h2 {
@@ -235,7 +241,7 @@ main {
 
 .intro h1 {
   margin-top: 16px;
-  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-family: var(--font-heading);
   font-size: clamp(36px, 4.5vw, 50px);
   font-weight: 400;
   line-height: 1.2;
@@ -732,3 +738,13 @@ summary::marker {
   }
 }
 .portfolio-snapshot{display:block;width:100%;max-height:340px;object-fit:contain;object-position:left;background:#edf0e6;margin:18px 0;border:1px solid #d4dccb;border-radius:3px}.personal-photo-strip{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:25px 0}.personal-photo-strip img{width:100%;height:240px;object-fit:cover;border-radius:2px}@media(max-width:550px){.personal-photo-strip img{height:170px}}
+
+/* Shared field-guide type scale for all readable portfolio routes. */
+.intro h1{letter-spacing:-.7px;line-height:1.15}
+h2{font-size:28px;letter-spacing:-.3px}
+h3{font-size:22px}
+.small-label,.section-number,.project-label{font-size:12px;letter-spacing:.2px;text-transform:none}
+.link-list{font-size:13px}
+.entry-date,.entry-meta,.sidebar{font-size:13px}
+.intro h1 span{color:inherit}
+@media(max-width:600px){h2{font-size:25px}h3{font-size:21px}.intro h1{font-size:36px}.entry-copy,.project p{font-size:15px;line-height:1.7}}

@@ -1,0 +1,19 @@
+/* Shared by the 3D portfolio and the static pages. Fonts licensed under OFL. */
+@font-face {
+  font-family: 'Bree Serif';
+  src: url('/fonts/bree-serif.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cabin';
+  src: url('/fonts/cabin.ttf') format('truetype');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --font-heading: 'Bree Serif', Rockwell, Georgia, serif;
+  --font-body: 'Cabin', 'Trebuchet MS', sans-serif;
+}

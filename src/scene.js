@@ -4,6 +4,12 @@ import { projects, hobbies } from './portfolio.js';
 
 // An authored woodland clearing, informed by the Loj. This is not surveyed geometry.
 export async function createTrailScene({ canvas, engine, onInteract = () => {}, onPageChange = () => {}, onReady = () => {}, onError = () => {} }) {
+  // Canvas labels are baked once; load their faces before creating textures.
+  await Promise.allSettled([
+    document.fonts.load('400 32px "Bree Serif"'),
+    document.fonts.load('400 24px Cabin'),
+    document.fonts.load('700 24px Cabin'),
+  ]);
   let renderer;
   try {
     renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
@@ -214,17 +220,17 @@ export async function createTrailScene({ canvas, engine, onInteract = () => {}, 
     const brace=box(.15,.88,.15,wood,[x-Math.sign(x)*.26,2.55,1.65],kiosk);brace.rotation.z=Math.sign(x)*-.62;
   }
   for(let i=0;i<17;i++)box(.247,.1,2.0,darkWood,[-2.06+i*.257,.08,.8],kiosk);
-  const fasciaTex=texture(1024,(ctx,s)=>{ctx.fillStyle='#433e31';ctx.fillRect(0,0,s,s);ctx.fillStyle='#dfbc52';ctx.textAlign='center';ctx.font='bold 105px sans-serif';ctx.translate(s/2,s/2);ctx.scale(1,5.5);ctx.fillText('REGISTER HERE',0,35);});
+  const fasciaTex=texture(1024,(ctx,s)=>{ctx.fillStyle='#433e31';ctx.fillRect(0,0,s,s);ctx.fillStyle='#dfbc52';ctx.textAlign='center';ctx.font='bold 105px Cabin';ctx.translate(s/2,s/2);ctx.scale(1,5.5);ctx.fillText('REGISTER HERE',0,35);});
   mesh(new THREE.PlaneGeometry(3.45,.34),material({map:fasciaTex,roughness:1}),[0,2.91,2.1],kiosk);
   for(const [words,y] of [[['ALL DOGS','MUST','BE LEASHED'],2.35],[['SKIS OR','SNOWSHOES','IN WINTER'],1.92]]){
-    const ruleTex=texture(256,(ctx,s)=>{ctx.fillStyle='#e4bb4d';ctx.fillRect(0,0,s,s);ctx.strokeStyle='#514b30';ctx.strokeRect(8,8,s-16,s-16);ctx.fillStyle='#33392c';ctx.textAlign='center';ctx.font='bold 33px sans-serif';words.forEach((line,i)=>ctx.fillText(line,s/2,75+i*48));});
+    const ruleTex=texture(256,(ctx,s)=>{ctx.fillStyle='#e4bb4d';ctx.fillRect(0,0,s,s);ctx.strokeStyle='#514b30';ctx.strokeRect(8,8,s-16,s-16);ctx.fillStyle='#33392c';ctx.textAlign='center';ctx.font='bold 33px Cabin';words.forEach((line,i)=>ctx.fillText(line,s/2,75+i*48));});
     mesh(new THREE.PlaneGeometry(.4,.35),material({map:ruleTex,roughness:1}),[2.15,y,1.79],kiosk);
   }
   const nailMat=material({color:'#353936',metalness:.65,roughness:.5});
   for(const x of [-2.15,2.15])for(const y of [.85,2.77]){const n=mesh(new THREE.CylinderGeometry(.025,.025,.025,8),nailMat,[x,y,.14],kiosk);n.rotation.x=Math.PI/2;}
   const titleTex=texture(1024,(ctx,s)=>{
     ctx.fillStyle='#234132';ctx.fillRect(0,0,s,s);ctx.strokeStyle='#ced1a9';ctx.lineWidth=12;ctx.strokeRect(18,18,s-36,s-36);
-    ctx.fillStyle='#f1ecd5';ctx.textAlign='center';ctx.font='bold 67px Georgia';ctx.translate(s/2,s/2);ctx.scale(1,6);ctx.fillText('ADIRONDACK HIGH PEAKS',0,22);
+    ctx.fillStyle='#f1ecd5';ctx.textAlign='center';ctx.font='400 67px "Bree Serif"';ctx.translate(s/2,s/2);ctx.scale(1,6);ctx.fillText('ADIRONDACK HIGH PEAKS',0,22);
   });
   const titleMat=material({map:titleTex,roughness:.8});
   const title=mesh(new THREE.PlaneGeometry(3.95,.47),titleMat,[0,2.42,.14],kiosk);title.castShadow=false;
@@ -232,22 +238,22 @@ export async function createTrailScene({ canvas, engine, onInteract = () => {}, 
     ctx.fillStyle='#e8e5cc';ctx.fillRect(0,0,s,s);
     ctx.strokeStyle='#d0d2b5';ctx.lineWidth=2;
     for(let r=30;r<850;r+=26){ctx.beginPath();for(let k=0;k<=90;k++){const a=k/90*Math.PI*2,rr=r*(1+Math.sin(a*5+r*.01)*.09);const x=590+Math.cos(a)*rr*.6,y=570+Math.sin(a)*rr; k?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.stroke();}
-    ctx.fillStyle='#254537';ctx.font='bold 56px sans-serif';ctx.fillText('FROM THE LOJ',65,88);ctx.font='25px sans-serif';ctx.fillText('A SCHEMATIC OF THE HIGH PEAKS',65,130);
+    ctx.fillStyle='#254537';ctx.font='bold 56px Cabin';ctx.fillText('FROM THE LOJ',65,88);ctx.font='25px Cabin';ctx.fillText('A SCHEMATIC OF THE HIGH PEAKS',65,130);
     const line=(points,color)=>{ctx.strokeStyle=color;ctx.lineWidth=10;ctx.lineJoin='round';ctx.beginPath();points.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.stroke();};
     line([[180,235],[265,320],[390,350],[470,480],[590,535]],'#507c95');
     line([[590,535],[670,650],[620,770],[700,890]],'#b89d40');
     line([[390,350],[310,490],[240,620],[300,730]],'#64754d');
     ctx.fillStyle='#85a9ae';ctx.beginPath();ctx.ellipse(610,766,20,44,-.4,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.ellipse(700,889,26,45,-.4,0,Math.PI*2);ctx.fill();
-    ctx.fillStyle='#253c30';ctx.font='bold 32px sans-serif';ctx.fillText('Adirondak Loj',65,205);ctx.fillText('Marcy Dam',500,480);ctx.fillText('Algonquin Peak',60,790);ctx.font='bold 27px sans-serif';ctx.fillText('Avalanche Lake',680,740);ctx.fillText('Lake Colden',740,895);
-    ctx.font='23px sans-serif';ctx.fillText('TRAILHEAD',65,250);ctx.fillText('Van Hoevenberg Trail',390,305);ctx.fillText('Not for navigation',65,975);
+    ctx.fillStyle='#253c30';ctx.font='bold 32px Cabin';ctx.fillText('Adirondak Loj',65,205);ctx.fillText('Marcy Dam',500,480);ctx.fillText('Algonquin Peak',60,790);ctx.font='bold 27px Cabin';ctx.fillText('Avalanche Lake',680,740);ctx.fillText('Lake Colden',740,895);
+    ctx.font='23px Cabin';ctx.fillText('TRAILHEAD',65,250);ctx.fillText('Van Hoevenberg Trail',390,305);ctx.fillText('Not for navigation',65,975);
     ctx.fillStyle='#b46439';ctx.beginPath();ctx.arc(180,235,13,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#fff8df';ctx.lineWidth=4;ctx.stroke();
-    ctx.fillStyle='#264436';ctx.font='bold 24px sans-serif';ctx.fillText('N',922,190);ctx.beginPath();ctx.moveTo(930,205);ctx.lineTo(916,250);ctx.lineTo(930,240);ctx.lineTo(944,250);ctx.closePath();ctx.fill();
+    ctx.fillStyle='#264436';ctx.font='bold 24px Cabin';ctx.fillText('N',922,190);ctx.beginPath();ctx.moveTo(930,205);ctx.lineTo(916,250);ctx.lineTo(930,240);ctx.lineTo(944,250);ctx.closePath();ctx.fill();
   });
   const mapMat=material({map:mapTex,roughness:.9});mesh(new THREE.PlaneGeometry(1.94,1.35),mapMat,[1.02,1.48,.14],kiosk).castShadow=false;
   const noticeTex=texture(1024,(ctx,s)=>{
-    ctx.fillStyle='#ede8d5';ctx.fillRect(0,0,s,s);ctx.fillStyle='#283d2f';ctx.textAlign='center';ctx.font='bold 75px Georgia';ctx.fillText('WELCOME,',s/2,140);ctx.fillText('HIKER.',s/2,230);
-    ctx.font='38px sans-serif';['Please sign the trail register','before you head into the woods.','','Stay on marked trails.','Carry out your trash.'].forEach((t,i)=>ctx.fillText(t,s/2,350+i*65));
-    ctx.strokeStyle='#9b9c82';ctx.lineWidth=2;ctx.strokeRect(80,720,864,200);ctx.font='bold 30px sans-serif';ctx.fillText('REGISTER BELOW',s/2,790);ctx.font='27px sans-serif';ctx.fillText('Virtual trail register',s/2,865);
+    ctx.fillStyle='#ede8d5';ctx.fillRect(0,0,s,s);ctx.fillStyle='#283d2f';ctx.textAlign='center';ctx.font='400 75px "Bree Serif"';ctx.fillText('WELCOME,',s/2,140);ctx.fillText('HIKER.',s/2,230);
+    ctx.font='38px Cabin';['Please sign the trail register','before you head into the woods.','','Stay on marked trails.','Carry out your trash.'].forEach((t,i)=>ctx.fillText(t,s/2,350+i*65));
+    ctx.strokeStyle='#9b9c82';ctx.lineWidth=2;ctx.strokeRect(80,720,864,200);ctx.font='bold 30px Cabin';ctx.fillText('REGISTER BELOW',s/2,790);ctx.font='27px Cabin';ctx.fillText('Virtual trail register',s/2,865);
   });
   mesh(new THREE.PlaneGeometry(1.8,1.35),material({map:noticeTex,roughness:1}),[-1.02,1.48,.14],kiosk).castShadow=false;
   box(1.2,.42,.28,wood,[-1.02,.7,.28],kiosk);const lid=box(1.3,.055,.45,wood,[-1.02,.94,.35],kiosk);lid.rotation.x=.11;
@@ -260,7 +266,7 @@ export async function createTrailScene({ canvas, engine, onInteract = () => {}, 
   const directionGroup=new THREE.Group();directionGroup.position.set(5.4,0,-12);scene.add(directionGroup);
   box(.17,2.45,.17,darkWood,[0,1.2,0],directionGroup);
   for(const [text,y] of [['ALGONQUIN PEAK  ↗',2.13],['LAKE COLDEN  ↗',1.77]]){
-    const signTex=texture(1024,(ctx,s)=>{ctx.fillStyle='#354b35';ctx.fillRect(0,0,s,s);ctx.fillStyle='#f4edce';ctx.font='bold 70px sans-serif';ctx.textAlign='center';ctx.translate(s/2,s/2);ctx.scale(1,7);ctx.fillText(text,0,23);});
+    const signTex=texture(1024,(ctx,s)=>{ctx.fillStyle='#354b35';ctx.fillRect(0,0,s,s);ctx.fillStyle='#f4edce';ctx.font='bold 70px Cabin';ctx.textAlign='center';ctx.translate(s/2,s/2);ctx.scale(1,7);ctx.fillText(text,0,23);});
     box(2.2,.3,.09,darkWood,[.4,y,.02],directionGroup);mesh(new THREE.PlaneGeometry(2.16,.28),material({map:signTex,roughness:1}),[.4,y,.07],directionGroup);
   }
   // Personal field notes live on real objects in the clearing.
@@ -281,17 +287,17 @@ export async function createTrailScene({ canvas, engine, onInteract = () => {}, 
   for(let i=0;i<11;i++)box(.245,1.7,.025,wood,[-1.25+i*.25,1.73,.065],workBoard);
   box(3,.09,.4,darkWood,[0,2.67,0],workBoard);
   const workTitle=panelTexture(1300,180,(ctx,w,h)=>{
-    ctx.fillStyle='#263d32';ctx.fillRect(0,0,w,h);ctx.fillStyle='#eee4c8';ctx.font='bold 57px Georgia';ctx.fillText('EXPERIENCE',58,83);ctx.font='22px sans-serif';ctx.fillStyle='#b6bba0';ctx.fillText('HUZAIFA FAREED  /  SOFTWARE ENGINEERING',60,133);
+    ctx.fillStyle='#263d32';ctx.fillRect(0,0,w,h);ctx.fillStyle='#eee4c8';ctx.font='400 57px "Bree Serif"';ctx.fillText('EXPERIENCE',58,83);ctx.font='22px Cabin';ctx.fillStyle='#b6bba0';ctx.fillText('HUZAIFA FAREED  /  SOFTWARE ENGINEERING',60,133);
   });
   pinPaper(workBoard,0,2.28,.09,2.6,.36,workTitle);
   const employers=[['shopify','01','Shopify','Streaming infrastructure.','#b4c092'],['mlh','02','Meta × MLH','Production engineering.','#aabdc5'],['bombardier','03','Bombardier','Power BI, SQL, and Java.','#cbb595']];
   for(const [i,[key,number,name,copy,color]] of employers.entries()){
     const note=panelTexture(480,630,(ctx,w,h)=>{
       ctx.fillStyle='#e5dfcd';ctx.fillRect(0,0,w,h);ctx.fillStyle=color;ctx.fillRect(0,0,w,17);
-      ctx.fillStyle='#79816d';ctx.font='26px monospace';ctx.fillText(number,38,83);ctx.fillStyle='#26392e';ctx.font='bold 45px Georgia';ctx.fillText(name,35,194);
-      ctx.font='25px sans-serif';const words=copy.split(' ');let line='',y=270;for(const word of words){if(ctx.measureText(line+word).width>400){ctx.fillText(line,37,y);line='';y+=37;}line+=word+' ';}ctx.fillText(line,37,y);
+      ctx.fillStyle='#79816d';ctx.font='26px Cabin';ctx.fillText(number,38,83);ctx.fillStyle='#26392e';ctx.font='400 45px "Bree Serif"';ctx.fillText(name,35,194);
+      ctx.font='25px Cabin';const words=copy.split(' ');let line='',y=270;for(const word of words){if(ctx.measureText(line+word).width>400){ctx.fillText(line,37,y);line='';y+=37;}line+=word+' ';}ctx.fillText(line,37,y);
       ctx.strokeStyle='#b6b6a1';ctx.lineWidth=1;for(let k=0;k<5;k++){ctx.beginPath();ctx.moveTo(38,390+k*28);ctx.lineTo(420-(k%2)*70,390+k*28);ctx.stroke();}
-      ctx.fillStyle='#596951';ctx.font='24px monospace';ctx.fillText('READ EXPERIENCE ↗',37,578);
+      ctx.fillStyle='#596951';ctx.font='24px Cabin';ctx.fillText('READ EXPERIENCE ↗',37,578);
     });
     const fieldNote=pinPaper(workBoard,(i-1)*.85,1.48,.105,.77,1.01,note,(i-1)*.025);
     workBoard.updateWorldMatrix(true,true);
@@ -324,14 +330,14 @@ export async function createTrailScene({ canvas, engine, onInteract = () => {}, 
     const project=projects[projectPage],ctx=journalTex.image.getContext('2d');
     ctx.fillStyle='#e9e2cf';ctx.fillRect(0,0,1400,940);ctx.fillStyle='#c6c1af';ctx.fillRect(694,0,12,940);
     ctx.strokeStyle='#d2cbb9';ctx.lineWidth=1;for(let y=250;y<760;y+=50){ctx.beginPath();ctx.moveTo(55,y);ctx.lineTo(640,y);ctx.stroke();}
-    ctx.fillStyle='#66765e';ctx.font='25px monospace';ctx.fillText(`PROJECT ${String(projectPage+1).padStart(2,'0')} / ${projects.length}`,55,88);
-    ctx.fillStyle='#233e30';ctx.font='bold 55px Georgia';wrapText(ctx,project.title,55,180,570,65,2);
-    ctx.font='29px sans-serif';wrapText(ctx,project.copy,55,340,560,45,7);
-    ctx.fillStyle='#805e36';ctx.font='25px monospace';ctx.fillText('READ THIS PROJECT ↗',55,790);
+    ctx.fillStyle='#66765e';ctx.font='25px Cabin';ctx.fillText(`PROJECT ${String(projectPage+1).padStart(2,'0')} / ${projects.length}`,55,88);
+    ctx.fillStyle='#233e30';ctx.font='400 55px "Bree Serif"';wrapText(ctx,project.title,55,180,570,65,2);
+    ctx.font='29px Cabin';wrapText(ctx,project.copy,55,340,560,45,7);
+    ctx.fillStyle='#805e36';ctx.font='25px Cabin';ctx.fillText('READ THIS PROJECT ↗',55,790);
     ctx.fillStyle='#d7dacd';ctx.fillRect(755,110,585,545);
     const img=folioImages.get(project.image);if(img)drawImageFit(ctx,img,755,110,585,545);
-    ctx.fillStyle='#334b39';ctx.font='28px sans-serif';wrapText(ctx,project.kicker,760,710,570,38,2);
-    ctx.font='24px monospace';ctx.fillText(`${projectPage+1} / ${projects.length}`,1020,800);
+    ctx.fillStyle='#334b39';ctx.font='28px Cabin';wrapText(ctx,project.kicker,760,710,570,38,2);
+    ctx.font='24px Cabin';ctx.fillText(`${projectPage+1} / ${projects.length}`,1020,800);
     journalTex.needsUpdate=true;
   }
   paintProject();
@@ -345,7 +351,7 @@ export async function createTrailScene({ canvas, engine, onInteract = () => {}, 
     leaf.rotation.y=direction>0?0:-Math.PI;leaf.visible=true;pageTurn={start:performance.now(),direction};
   }
   function pageButton(parent,x,y,z,label,id,action){
-    const tex=panelTexture(450,180,(ctx,w,h)=>{ctx.fillStyle='#344d3e';ctx.fillRect(0,0,w,h);ctx.strokeStyle='#c3c5a4';ctx.lineWidth=5;ctx.strokeRect(8,8,w-16,h-16);ctx.fillStyle='#f2ead4';ctx.font='bold 58px sans-serif';ctx.textAlign='center';ctx.fillText(label,w/2,112);});
+    const tex=panelTexture(450,180,(ctx,w,h)=>{ctx.fillStyle='#344d3e';ctx.fillRect(0,0,w,h);ctx.strokeStyle='#c3c5a4';ctx.lineWidth=5;ctx.strokeRect(8,8,w-16,h-16);ctx.fillStyle='#f2ead4';ctx.font='bold 58px Cabin';ctx.textAlign='center';ctx.fillText(label,w/2,112);});
     const button=mesh(new THREE.PlaneGeometry(.46,.184),material({map:tex,roughness:1}),[x,y,z],parent);button.castShadow=false;
     // Broad lower-page targets leave room for imprecise aiming and touch input.
     // Keep them just ahead of the paper so its larger Read target cannot win.
@@ -376,14 +382,14 @@ export async function createTrailScene({ canvas, engine, onInteract = () => {}, 
   const mugInside=mesh(new THREE.CircleGeometry(.09,20),material({color:'#3d4131',roughness:1}),[.98,.976,0],projectsBench);mugInside.rotation.x=-Math.PI/2;
   const handle=mesh(new THREE.TorusGeometry(.075,.015,8,16),enamel,[1.11,.89,0],projectsBench);handle.rotation.y=Math.PI/2;
   const pencil=mesh(new THREE.CylinderGeometry(.009,.009,.32,6),material({color:'#a88840',roughness:.8}),[-1,.8,.06],projectsBench);pencil.rotation.z=1.3;
-  const benchLabel=panelTexture(1200,150,(ctx,w,h)=>{ctx.fillStyle='#43503b';ctx.fillRect(0,0,w,h);ctx.fillStyle='#e7dfc7';ctx.font='bold 63px Georgia';ctx.fillText('PROJECTS',45,96);ctx.font='26px monospace';ctx.fillText('OPEN PROJECTS ↗',520,91);});
+  const benchLabel=panelTexture(1200,150,(ctx,w,h)=>{ctx.fillStyle='#43503b';ctx.fillRect(0,0,w,h);ctx.fillStyle='#e7dfc7';ctx.font='400 63px "Bree Serif"';ctx.fillText('PROJECTS',45,96);ctx.font='26px Cabin';ctx.fillText('OPEN PROJECTS ↗',520,91);});
   mesh(new THREE.PlaneGeometry(2.4,.3),material({map:benchLabel,roughness:1}),[0,.59,.335],projectsBench).castShadow=false;
   interactive(projectsBench,'projects','Open the project notebook',[5,1.05,-3]);
 
   const outsideStand=new THREE.Group();outsideStand.position.set(4,0,3);outsideStand.rotation.y=-1.65;scene.add(outsideStand);
   for(const x of [-.58,.58])box(.1,1.98,.1,darkWood,[x,.99,0],outsideStand);
   box(1.75,1.46,.08,wood,[0,1.43,0],outsideStand);
-  const outsideTitle=panelTexture(1000,150,(ctx,w,h)=>{ctx.fillStyle='#364636';ctx.fillRect(0,0,w,h);ctx.fillStyle='#e9dfc4';ctx.font='bold 63px Georgia';ctx.fillText('OUTSIDE',40,99);ctx.font='23px monospace';ctx.fillText('HIKING, RUNNING & MORE',420,94);});
+  const outsideTitle=panelTexture(1000,150,(ctx,w,h)=>{ctx.fillStyle='#364636';ctx.fillRect(0,0,w,h);ctx.fillStyle='#e9dfc4';ctx.font='400 63px "Bree Serif"';ctx.fillText('OUTSIDE',40,99);ctx.font='23px Cabin';ctx.fillText('HIKING, RUNNING & MORE',420,94);});
   pinPaper(outsideStand,0,2.05,.075,1.65,.2,outsideTitle);
   // The photo album sits clearly in front of its board, including its caption.
   const albumFrame=box(1.55,1.02,.025,paper,[0,1.38,.09],outsideStand);
@@ -392,8 +398,8 @@ export async function createTrailScene({ canvas, engine, onInteract = () => {}, 
     const item=hobbies[outsidePage],ctx=albumTex.image.getContext('2d');
     ctx.fillStyle='#ece6d6';ctx.fillRect(0,0,1200,840);
     const img=folioImages.get(item.image);if(img)drawImageFit(ctx,img,32,30,1136,610,true);
-    ctx.fillStyle='#485c45';ctx.font='24px monospace';ctx.fillText(item.kicker.toUpperCase(),40,690);
-    ctx.fillStyle='#263e30';ctx.font='bold 39px Georgia';wrapText(ctx,item.title,40,750,1100,43,2);
+    ctx.fillStyle='#485c45';ctx.font='24px Cabin';ctx.fillText(item.kicker.toUpperCase(),40,690);
+    ctx.fillStyle='#263e30';ctx.font='400 39px "Bree Serif"';wrapText(ctx,item.title,40,750,1100,43,2);
     albumTex.needsUpdate=true;
   }
   paintOutside();

@@ -25,7 +25,7 @@ for (const [slug, title, description] of sections) {
 <link rel="canonical" href="${origin}/${slug}/" /><link rel="stylesheet" href="/about.css" /><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<style>main{max-width:720px;margin:40px auto 80px}h1{font:400 42px/1.2 Georgia,serif}.section-heading{align-items:center}.masthead{gap:20px;flex-wrap:wrap}</style>
+<style>main{max-width:720px;margin:40px auto 80px}h1{font:400 42px/1.2 var(--font-heading)}.section-heading{align-items:center}.masthead{gap:20px;flex-wrap:wrap}</style>
 </head><body><a class="skip-link" href="#content">Skip to content</a><div class="shell">
 <header class="masthead"><a href="/">← Back to the clearing</a><nav aria-label="Portfolio"><ul class="link-list"><li><a href="/about/">About</a></li>${sections.map(([path, name]) => `<li><a href="/${path}/"${path === slug ? ' aria-current="page"' : ''}>${name}</a></li>`).join('')}<li><a href="/resume/">Résumé</a></li></ul></nav></header>
 <main id="content">${content}</main></div></body></html>\n`);

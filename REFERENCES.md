@@ -41,3 +41,8 @@ The blue-grey 2012 Volkswagen Jetta TDI is an original, simplified 3D model, inf
 ## Browser icon
 
 The favicon and Apple touch icon are cropped derivatives of Huzaifa’s public GitHub avatar (`https://avatars.githubusercontent.com/u/146299744?v=4`), added at his request. The site serves local copies.
+
+## Typography
+
+- [Bree Serif](https://github.com/google/fonts/tree/main/ofl/breeserif) for headings and the 3D signs; [Cabin](https://github.com/google/fonts/tree/main/ofl/cabin) for reading text and controls. Original font files are self-hosted in `public/fonts/`, with their SIL Open Font License texts.
+- [Anthropic frontend-design skill](https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md) informed the type direction and mobile review. The implementation follows the existing trailhead concept; design notes are in `DESIGN.md`.

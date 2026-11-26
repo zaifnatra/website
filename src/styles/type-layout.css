@@ -1,0 +1,56 @@
+/* Field-guide typography: substantial headings, readable text, quiet labels. */
+.personal-brand { font-size: 28px; line-height: 1.1; }
+.personal-brand .brand-sub { font-size: 10px; letter-spacing: .3px; margin-top: 7px; }
+.masthead .nav-link { font-size: 13px; font-weight: 600; }
+.welcome-note { width: 360px; }
+.welcome-note h1 { font-size: 46px; line-height: 1.13; letter-spacing: -.7px; }
+.welcome-note .eyebrow { font-size: 11px; letter-spacing: .2px; }
+.welcome-note p { font-size: 15px; line-height: 1.6; }
+.welcome-actions button, .welcome-actions button:last-child { font-size: 12px; }
+dialog h2, .portfolio-dialog h2 { font-size: 48px; line-height: 1.13; letter-spacing: -.6px; }
+.dialog-top .eyebrow { font-size: 12px; letter-spacing: .2px; text-transform: none; }
+.portfolio-dialog .dialog-lead { font-size: 15px; line-height: 1.65; max-width: 65ch; }
+.portfolio-entry p, .portfolio-entry .work-notes { font-size: 14px; line-height: 1.75; }
+.portfolio-entry h3 { font-family: var(--font-heading); font-size: 24px; font-weight: 400; }
+.portfolio-entry .entry-meta, .portfolio-entry .entry-date { font-size: 12px; }
+.portfolio-entry .tag { font-size: 11px; }
+.work-away-grid p { font-size: 14px; }
+.portfolio-footer, .portfolio-footer .text-link { font-size: 12px; }
+.folio-dialog h2 { font-size: 44px; }
+.folio-dialog .folio-text-page h3 { font-size: 35px; line-height: 1.15; letter-spacing: -.4px; }
+.folio-dialog .folio-text-page .folio-copy { font-size: 15px; line-height: 1.7; }
+.folio-dialog .folio-text-page .folio-detail { font-size: 13px; line-height: 1.7; }
+.folio-dialog .folio-text-page .folio-kicker { font-size: 12px; line-height: 1.5; letter-spacing: 0; text-transform: none; }
+.folio-dialog .folio-page-eyebrow { font-size: 11px; letter-spacing: .1px; }
+.folio-dialog .folio-image-page figcaption { font-size: 12px; font-style: normal; }
+.folio-dialog .folio-page-number { font-size: 12px; font-variant-numeric: tabular-nums; }
+.folio-dialog .folio-text-page .tag { font-size: 11px; }
+.folio-dialog .folio-text-page .portfolio-links { font-size: 13px; }
+.folio-dialog .folio-navigation button { min-height: 48px; font-size: 13px; }
+.folio-dialog .folio-page-count { font-size: 12px; letter-spacing: 0; }
+.folio-dialog .folio-keyboard-hint { font-size: 11px; }
+.folio-dialog .portfolio-footer, .folio-dialog .portfolio-footer .text-link { font-size: 12px; }
+.chapter-nav button { font-size: 12px; }
+.radar-title { font-size: 10px; letter-spacing: .1px; }
+.radar-tip { font-size: 10px; }
+.radar-waypoint { font-size: 11px; }
+@media (max-width: 760px) {
+  .personal-brand { font-size: 24px; }
+  .personal-brand .brand-sub { font-size: 9px; letter-spacing: .1px; }
+  .masthead .nav-link { font-size: 12px; }
+  .welcome-note h1 { font-size: 30px; }
+  .welcome-note { top: 32px; }
+  .welcome-note h1 { margin: 14px 0 10px; }
+  .welcome-note .eyebrow { font-size: 10px; line-height: 1.5; }
+  .welcome-note p { font-size: 13px; line-height: 1.6; }
+  .welcome-actions { flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+  .welcome-actions button, .welcome-actions button:last-child { font-size: 11px; }
+  dialog h2, .portfolio-dialog h2 { font-size: 36px; }
+  .portfolio-entry .entry-heading { flex-wrap: wrap; gap: 8px; }
+  .folio-dialog .folio-text-page h3 { font-size: 30px; }
+  .folio-dialog .folio-text-page .folio-copy { font-size: 14px; }
+  .folio-dialog .folio-navigation button { font-size: 12px; padding: 10px; gap: 8px; }
+  .folio-dialog .folio-page-count { font-size: 11px; }
+  .radar-title, .radar-tip { font-size: 9px; }
+  .radar-waypoint { font-size: 10px; }
+}

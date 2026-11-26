@@ -11,6 +11,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="preload" href="/fonts/bree-serif.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="/fonts/cabin.ttf" as="font" type="font/ttf" crossorigin />
   <link rel="stylesheet" href="/src/styles/theme.css" />
   <script type="module" src="/src/main.js"></script>
 </head>
@@ -19,7 +21,7 @@
   <canvas id="world" inert tabindex="-1" aria-label="First-person Loj trailhead. Use W A S D to walk, drag to look, and E to read the trail register."></canvas>
   <div class="shade" aria-hidden="true"></div>
   <header class="masthead">
-    <a href="./" class="brand personal-brand" aria-label="Huzaifa Fareed, home"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M3 30 15 9l8 14 5-8 10 15H3Z" stroke="currentColor" stroke-width="1.5"/><path d="m11 16 4 3 4-3M24 22l4 3 3-4" stroke="currentColor" stroke-width="1.3"/></svg><span>Huzaifa Fareed<span class="brand-sub">SOFTWARE / PEOPLE / THE OUTDOORS</span></span></a>
+    <a href="./" class="brand personal-brand" aria-label="Huzaifa Fareed, home"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M3 30 15 9l8 14 5-8 10 15H3Z" stroke="currentColor" stroke-width="1.5"/><path d="m11 16 4 3 4-3M24 22l4 3 3-4" stroke="currentColor" stroke-width="1.3"/></svg><span>Huzaifa Fareed<span class="brand-sub">Software & outdoors</span></span></a>
     <nav aria-label="Main navigation"><button class="nav-link" id="experience-button">Explore</button><button class="nav-link" data-open="experience-dialog">Experience</button><button class="nav-link" data-open="projects-dialog">Projects</button><button class="nav-link" data-open="outside-dialog">Outside</button><button class="nav-link contact-nav" data-open="contact-dialog">Contact <span>↗</span></button></nav>
     <button class="icon-button" id="sound-button" aria-label="Enable forest sound" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4V9Z" stroke="currentColor" stroke-width="1.5"/><path d="m17 9 5 6m0-6-5 6" stroke="currentColor" stroke-width="1.5" id="sound-waves"/></svg></button>
   </header>
@@ -33,7 +35,7 @@
     </section>
     <aside class="route-card" aria-label="Explore my portfolio"><div class="card-heading"><span>PORTFOLIO</span></div><button class="route-link" data-open="experience-dialog">01 · Experience <span>↗</span></button><button class="route-link" data-open="projects-dialog">02 · Projects <span>↗</span></button><button class="route-link" data-open="outside-dialog">03 · Outside <span>↗</span></button><a class="route-link" href="/about/">Read the full portfolio <span>↗</span></a></aside>
     <div class="scene-hud" hidden>
-      <section class="welcome-note" id="welcome-note" aria-labelledby="welcome-title"><span class="eyebrow"><span class="live-dot"></span> SOFTWARE ENGINEER · MONTRÉAL</span><h1 id="welcome-title">Hi, I’m Huzaifa.</h1><p>I work on streaming infrastructure at Shopify.<br>I like hiking and running.</p><div class="welcome-actions"><button data-open="experience-dialog">Experience <span>↗</span></button><button id="wander-button">Explore</button></div></section>
+      <section class="welcome-note" id="welcome-note" aria-labelledby="welcome-title"><span class="eyebrow"><span class="live-dot"></span> Software engineer in Montréal</span><h1 id="welcome-title">Hi, I’m Huzaifa.</h1><p>I work on streaming infrastructure at Shopify.<br>I like hiking and running.</p><div class="welcome-actions"><button data-open="experience-dialog">Experience <span>↗</span></button><button id="wander-button">Explore</button></div></section>
       <div class="place-marker"><span class="live-dot"></span> ADIRONDACK LOJ <span>/</span> MY VIRTUAL TRAILHEAD</div>
       <div class="compass" aria-label="Camera heading"><span>W</span><span>·</span><span id="heading">N</span><span>·</span><span>E</span><i></i></div>
       <button class="interact-button" id="interact-button" hidden><kbd>E</kbd> <span id="interaction-label">Read the trail register</span><span>↗</span></button>

@@ -100,7 +100,7 @@ function renderReader(kind, previousIndex, animate = true) {
   const project = kind === 'projects';
   const imageLabel = project ? `${item.title} project screenshot` : item.alt;
   spread.innerHTML = `<figure class="folio-image-page ${project ? 'folio-project-image' : 'folio-photo-image'}">
-    <span class="folio-page-eyebrow">${project ? 'PROJECT SCREENSHOT' : 'MY PHOTOS'}</span>
+    <span class="folio-page-eyebrow">${project ? 'Screenshot' : 'Photo'}</span>
     <a href="${base}images/${item.image}" target="_blank" rel="noopener noreferrer" aria-label="Open ${imageLabel}"><img src="${base}images/${item.image}" alt="${imageLabel}" width="1200" height="900" decoding="async" /><span>View ${project ? 'screenshot' : 'photo'} ↗</span></a>
     <figcaption>${String(index + 1).padStart(2, '0')} / ${project ? 'A project notebook' : 'Photos'}</figcaption>
     </figure><article class="folio-text-page" aria-labelledby="${kind}-page-title"><span class="folio-page-number" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span><p class="folio-kicker">${item.kicker}</p><h3 id="${kind}-page-title">${item.title}</h3><p class="folio-copy">${item.copy}</p>
@@ -161,7 +161,7 @@ export function mountPortfolio() {
   if (document.getElementById('experience-dialog')) return;
   document.body.insertAdjacentHTML('beforeend', `
     <dialog id="experience-dialog" class="portfolio-dialog portfolio-dialog-wide" aria-labelledby="experience-title">
-      ${dialogTop('01', 'WORK & SCHOOL')}
+      ${dialogTop('01', 'Experience')}
       <h2 id="experience-title">Experience</h2>
       <p class="dialog-lead">I’m a software engineering student at Concordia, currently working on streaming infrastructure at Shopify.</p>
       <div class="experience-route">
@@ -188,7 +188,7 @@ export function mountPortfolio() {
           <p>I led a crew of three to five people and worked in sales.</p>
         </article>
         <section class="portfolio-entry work-away" aria-labelledby="work-away-title">
-          <p class="eyebrow">RESTAURANT WORK</p><h3 id="work-away-title">Restaurant experience</h3>
+          <p class="eyebrow">Restaurant work</p><h3 id="work-away-title">Restaurant experience</h3>
           <div class="work-away-grid"><article><h4>Sushi Topia</h4><p class="entry-meta">Sushi chef · Sainte-Anne-de-Bellevue</p><p>I worked as a sushi chef in a basement in Sainte-Anne-de-Bellevue.</p></article><article><h4>Chalet Thai</h4><p class="entry-meta">Dishwashing & food prep · Sainte-Anne-de-Bellevue</p><p>I washed dishes and handled food prep at Chalet Thai, also in Sainte-Anne-de-Bellevue.</p></article></div>
         </section>
         <article class="portfolio-entry">
@@ -200,7 +200,7 @@ export function mountPortfolio() {
     </dialog>
 
     <dialog id="projects-dialog" class="portfolio-dialog portfolio-dialog-wide folio-dialog" aria-labelledby="projects-title">
-      ${dialogTop('02', 'PROJECTS')}
+      ${dialogTop('02', 'Projects')}
       <h2 id="projects-title">Projects</h2>
       <p class="dialog-lead">Personal projects and hackathon entries.</p>
       ${readerShell('projects')}
@@ -208,7 +208,7 @@ export function mountPortfolio() {
     </dialog>
 
     <dialog id="outside-dialog" class="portfolio-dialog portfolio-dialog-wide folio-dialog" aria-labelledby="outside-title">
-      ${dialogTop('03', 'OUTSIDE')}
+      ${dialogTop('03', 'Outside')}
       <h2 id="outside-title">Outside</h2>
       <p class="dialog-lead">Photos from hiking, running, camping, and golf.</p>
       ${readerShell('outside')}
@@ -216,12 +216,12 @@ export function mountPortfolio() {
     </dialog>
 
     <dialog id="contact-dialog" class="portfolio-dialog" aria-labelledby="contact-title">
-      ${dialogTop('04', 'CONTACT')}
+      ${dialogTop('04', 'Contact')}
       <h2 id="contact-title">Contact</h2>
       <p class="dialog-lead">Email me about work, projects, or hiking.</p>
       <a class="contact-address" href="mailto:huzaifafareed817@gmail.com">huzaifafareed817@gmail.com <span aria-hidden="true">↗</span></a>
       <div class="contact-links">${external('https://github.com/zaifnatra', 'GitHub')}${external('https://linkedin.com/in/huzaifa-fareed', 'LinkedIn')}<a href="/resume/" target="_blank" rel="noopener noreferrer">Résumé <span aria-hidden="true">↗</span></a></div>
-      <p class="contact-location"><span class="eyebrow">BASED IN</span><br>Montréal, Québec</p>
+      <p class="contact-location"><span class="eyebrow">Based in</span><br>Montréal, Québec</p>
       <div class="portfolio-footer"><a class="text-link" href="/about/">Read more ↗</a><button class="text-link" data-close>Back to the trail →</button></div>
     </dialog>
   `);

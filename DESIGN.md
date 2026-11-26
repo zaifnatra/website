@@ -5,10 +5,27 @@ A personal, immersive return to Adirondak Loj. The page opens directly in a comp
 ## Visual language
 
 - Dark forest green, warm cream, quiet rust accents.
-- Libre Caslon Display headings and DM Sans interface type, with system fallbacks.
+- Bree Serif headings and Cabin text, self-hosted with OFL licenses. Use the same faces in canvas signs and notebooks.
 - Photography fills the landing view; UI stays thin and spacious.
 - A minimal HUD frames the first-person scene; nearby interaction reveals the register.
 - The shelter silhouette and yellow REGISTER HERE sign reference the real trail register.
+
+## Typography direction
+
+Use the lettering of park signs and practical field guides as the reference. Bree Serif's sturdy, curved slab forms replace the thin display serif; Cabin keeps paragraphs and controls readable. Avoid decorative italics, miniature labels, and excessive letter spacing. Actual trail signs can retain capitals; portfolio text uses sentence case.
+
+- Palette retained: forest `#142e35`, ink `#263d32`, paper `#f1efe5`, moss `#66765e`, sign yellow `#dfbc52`.
+- Type scale: 46–52px main headings, 32–38px project titles, 14–16px reading text, 12px metadata. Reduce display sizes on mobile, not reading sizes.
+- Layout retained: left-aligned content, roughly 65-character paragraphs, photographs opposite notebook text. The 3D clearing remains the opening view.
+
+```text
+Project heading
+Short introduction
+[ screenshot / photo ] [ title + readable description ]
+Previous                  page count               Next
+```
+
+Review: a delicate literary serif plus tiny tracked labels felt generic. Use the heavier slab face for the identity and titles, with quieter Cabin text around it. No new ornamental badges or decorative copy.
 
 ## Interaction
 
