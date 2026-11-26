@@ -20,7 +20,7 @@ npm run preview
 
 `npm run deploy` builds and publishes the site to `zaifnatra/zaifnatra.github.io` (Pages serves `main` at `/`), then updates redirects in the original `zaifnatra/website` repository’s `gh-pages` branch. Source code remains in this repository. Deployment is not automatic.
 
-Clean routes: `/`, `/about/`, `/experience/`, `/projects/`, `/projects/mtl-minted/`, `/outside/`, and `/resume/`. GitHub Pages redirects slashless directory URLs such as `/resume` to `/resume/`. These are real static HTML pages, so direct links and refreshes work without an SPA fallback. The résumé page embeds the PDF and offers a download.
+Clean routes: `/`, `/about/`, `/experience/`, `/projects/`, `/projects/mtl-minted/`, `/outside/`, and `/resume/`. GitHub Pages redirects slashless directory URLs such as `/resume` to `/resume/`. These are real static HTML pages, so direct links and refreshes work without an SPA fallback. The résumé page shows a rendered preview and offers the original PDF download. Regenerate `public/images/resume-preview.webp` from the supplied PDF when the résumé changes.
 
 `npm run dev` and `npm run build` generate the section pages from `public/about/index.html` with `scripts/build-pages.mjs`. Update that source to keep the readable portfolio and individual sections consistent. Old `.html` links and `/website/` links forward to the new routes; older public image and PDF links remain available.
 
